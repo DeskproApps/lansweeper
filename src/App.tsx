@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 import { match } from "ts-pattern";
@@ -18,7 +17,7 @@ const App: FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { client } = useDeskproAppClient();
-  const isAdmin = useMemo(() => pathname.includes("/admin/"), [pathname]);
+  const isAdmin = pathname.includes("/admin/");
 
   useDeskproElements(({ registerElement }) => {
     registerElement("refresh", { type: "refresh_button" });
@@ -35,9 +34,6 @@ const App: FC = () => {
   }, 500);
 
   useDeskproAppEvents({
-    onShow: () => {
-      client && setTimeout(() => client.resize(), 200);
-    },
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     onElementEvent: debounceElementEvent,
