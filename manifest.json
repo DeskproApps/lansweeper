@@ -1,28 +1,19 @@
 {
-  "name": "@deskpro-apps/my-app",
-  "title": "My App",
-  "description": "My Deskpro app",
-  "version": "0.0.8",
+  "name": "@deskpro-apps/lensweeper",
+  "title": "Lansweeper",
+  "description": "",
+  "version": "0.0.0",
   "scope": "agent",
   "isSingleInstall": false,
   "hasDevMode": true,
-  "targets": [{ "target": "ticket_sidebar", "entrypoint": "index.html" }],
-  "settings": {
-    "example": {
-      "title": "Example Setting",
-      "description": "Example backend only setting",
-      "type": "string",
-      "isRequired": false,
-      "isBackendOnly": true
-    }
-  },
+  "serveUrl": "https://apps-cdn.deskpro-service.com/__name__/__version__",
+  "targets": [{ "target": "user_sidebar", "entrypoint": "index.html" }],
+  "settings": {},
   "proxy": {
-    "whitelist": [
-      {
-        "url": "https://jsonplaceholder.typicode.com/.*",
-        "methods": ["GET"],
-        "timeout": 20
-      }
-    ]
+    "whitelist": [{
+      "url": "https://api.lansweeper.com/api/*",
+      "methods": ["POST"],
+      "timeout": 20
+    }]
   }
 }
