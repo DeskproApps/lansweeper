@@ -2,7 +2,7 @@
   "name": "@deskpro-apps/lensweeper",
   "title": "Lansweeper",
   "description": "",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scope": "agent",
   "isSingleInstall": false,
   "hasDevMode": true,
@@ -10,10 +10,12 @@
   "targets": [{ "target": "user_sidebar", "entrypoint": "index.html" }],
   "settings": {},
   "proxy": {
-    "whitelist": [{
-      "url": "https://api.lansweeper.com/api/*",
-      "methods": ["POST"],
-      "timeout": 20
-    }]
+    "whitelist": [
+      {
+        "url": "https://api.lansweeper.com/api/*",
+        "methods": ["POST"],
+        "timeout": 20
+      }
+    ]
   }
 }
