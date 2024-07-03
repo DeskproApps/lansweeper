@@ -8,7 +8,39 @@
   "hasDevMode": true,
   "serveUrl": "https://apps-cdn.deskpro-service.com/__name__/__version__",
   "targets": [{ "target": "user_sidebar", "entrypoint": "index.html" }],
-  "settings": {},
+  "settings": {
+    "client_id": {
+      "title": "Client ID",
+      "type": "string",
+      "isRequired": true,
+      "isBackendOnly": false,
+      "order": 10
+    },
+    "client_secret": {
+      "title": "Client Secret",
+      "type": "string",
+      "isRequired": true,
+      "isBackendOnly": true,
+      "order": 20
+    },
+    "callback_url": {
+      "title": "Callback URL",
+      "type": "app_embedded",
+      "options": { "entrypoint": "#/admin/callback" },
+      "isRequired": false,
+      "isBackendOnly": true,
+      "order": 30
+    },
+    "global_access_token": {
+      "title": "",
+      "default": "",
+      "type": "app_embedded",
+      "options": { "entrypoint": "http://localhost:3003/#/admin/global-sign-in" },
+      "isRequired": true,
+      "isBackendOnly": true,
+      "order": 40
+    }
+  },
   "proxy": {
     "whitelist": [
       {
