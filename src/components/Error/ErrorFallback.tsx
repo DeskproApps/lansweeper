@@ -1,4 +1,3 @@
-import { Stack } from "@deskpro/deskpro-ui";
 import { DEFAULT_ERROR } from "../../constants";
 import { LansweeperError } from "../../services/lansweeper";
 import { Container, ErrorBlock } from "../commmon";
@@ -23,13 +22,7 @@ const ErrorFallback: FC<Props> = ({ error }) => {
 
   return (
     <Container>
-      <ErrorBlock
-        text={(
-          <Stack gap={6} vertical style={{ padding: "8px" }}>
-            {message}
-          </Stack>
-        )}
-      />
+      <ErrorBlock texts={[message]}/>
     </Container>
   );
 };
