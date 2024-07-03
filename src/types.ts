@@ -36,7 +36,9 @@ export type FetchOptions = Pick<RequestParams, "method"|"headers"> & V2ProxyRequ
 
 /** Deskpro types */
 export type Settings = {
-  //..
+  client_id?: string;
+  client_secret?: string;
+  global_access_token?: string; // JSON which looks like this format: {"access_token":"...","refresh_token":"..."}
 };
 
 export type UserData = {

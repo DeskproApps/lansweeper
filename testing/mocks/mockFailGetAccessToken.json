@@ -1,0 +1,7 @@
+{
+  "errors": [
+    {
+      "message": "Authorization code not valid for this client ID."
+    }
+  ]
+}
