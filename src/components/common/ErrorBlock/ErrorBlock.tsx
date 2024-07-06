@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { P5, Stack } from "@deskpro/deskpro-ui";
+import { P5 } from "@deskpro/deskpro-ui";
 import { DEFAULT_ERROR } from "../../../constants";
 import type { FC, ReactNode } from "react";
 
@@ -16,11 +16,11 @@ const StyledErrorBlock = styled(P5)`
 `;
 
 const ErrorBlock: FC<Props> = ({ texts }) => (
-  <Stack gap={6}>
+  <div>
     {texts.map((msg, idx) => (
       <StyledErrorBlock key={idx}>{msg || DEFAULT_ERROR}</StyledErrorBlock>)
     )}
-  </Stack>
+  </div>
 );
 
 export { ErrorBlock };

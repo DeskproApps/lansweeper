@@ -41,23 +41,25 @@ export type Settings = {
   global_access_token?: string; // JSON which looks like this format: {"access_token":"...","refresh_token":"..."}
 };
 
+export type DPUser = {
+  id: string;
+  name: string;
+  firstName: string;
+  lastName: string;
+  titlePrefix: string;
+  isDisabled: boolean;
+  isAgent: boolean;
+  isConfirmed: boolean;
+  emails: string[];
+  primaryEmail: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customFields: Dict<any>;
+  language: string;
+  locale: string;
+};
+
 export type UserData = {
-  user: {
-    id: string;
-    name: string;
-    firstName: string;
-    lastName: string;
-    titlePrefix: string;
-    isDisabled: boolean;
-    isAgent: boolean;
-    isConfirmed: boolean;
-    emails: string[];
-    primaryEmail: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    customFields: Dict<any>;
-    language: string;
-    locale: string;
-  },
+  user: DPUser;
 };
 
 export type UserContext = Context<UserData, Maybe<Settings>>;

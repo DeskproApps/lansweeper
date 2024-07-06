@@ -1,3 +1,4 @@
+import { get } from "lodash";
 import { DEFAULT_ERROR } from "../../constants";
 import { LansweeperError } from "../../services/lansweeper";
 import { Container, ErrorBlock } from "../common";
@@ -9,12 +10,11 @@ type Props = Omit<FallbackProps, "error"> & {
 };
 
 const ErrorFallback: FC<Props> = ({ error }) => {
-  const message = DEFAULT_ERROR;
+  let message = DEFAULT_ERROR;
   let consoleMessage;
 
-
   if (error instanceof LansweeperError) {
-    //..
+    message = get(error, ["data","errors", 0, "message"]) || DEFAULT_ERROR;
   }
 
   // eslint-disable-next-line no-console

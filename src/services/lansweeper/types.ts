@@ -11,6 +11,14 @@ export type AccessToken = {
   access_token: string;
   refresh_token: string;
   expires_in: number;
+  scope: string;
+};
+
+export type RefreshToken = {
+  token_type: "Bearer",
+  access_token: string;
+  expires_in: number;
+  scope: string;
 };
 
 export type User = {
