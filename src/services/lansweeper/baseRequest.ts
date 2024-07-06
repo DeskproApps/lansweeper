@@ -1,6 +1,6 @@
 import { isEmpty } from "lodash";
 import { proxyFetch, adminGenericProxyFetch } from "@deskpro/app-sdk";
-import { GRAPHQL_URL, placeholders } from "../../constants";
+import { BASE_URL, GRAPHQL_URL, placeholders } from "../../constants";
 import { getQueryParams, getRequestBody, parseGlobalAccessToken } from "../../utils";
 import { LansweeperError } from "./LansweeperError";
 import type { Request, FetchOptions } from "../../types";
@@ -15,7 +15,7 @@ const baseRequest: Request = async (client, {
   settings,
 }) => {
   const dpFetch = await (!settings ? proxyFetch : adminGenericProxyFetch)(client);
-  const baseUrl = rawUrl ? rawUrl : `${GRAPHQL_URL}${url || ""}`;
+  const baseUrl = rawUrl ?? (url ? `${BASE_URL}${url}` : GRAPHQL_URL);
   const params = getQueryParams(queryParams);
   const body = getRequestBody(data);
   const tokens = parseGlobalAccessToken(settings?.global_access_token);

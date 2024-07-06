@@ -13,7 +13,8 @@ const queryClient = new QueryClient({
 });
 
 const QueryKey = {
-  //..
+  SITES: "sites",
+  DEVICES: "devices",
 }
 
 export { queryClient, QueryKey };

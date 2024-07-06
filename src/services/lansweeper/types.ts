@@ -11,6 +11,14 @@ export type AccessToken = {
   access_token: string;
   refresh_token: string;
   expires_in: number;
+  scope: string;
+};
+
+export type RefreshToken = {
+  token_type: "Bearer",
+  access_token: string;
+  expires_in: number;
+  scope: string;
 };
 
 export type User = {
@@ -24,4 +32,11 @@ export type User = {
     imageUrl: string;
     language: string;
   };
+};
+
+export type Device = {
+  assetBasicInfo: {
+    name: string;
+  };
+  key: string;
 };
