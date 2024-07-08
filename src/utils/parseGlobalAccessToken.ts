@@ -18,7 +18,7 @@ const parseGlobalAccessToken: ParseGlobalAccessToken = (tokens) => {
     parsedTokens.access_token = get(parsed, "access_token", "");
     parsedTokens.refresh_token = get(parsed, "refresh_token", "");
   } catch (e) {
-    //..
+    // the error is handled in the calling code
   }
 
   return parsedTokens;

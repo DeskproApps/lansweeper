@@ -35,7 +35,7 @@
       "title": "",
       "default": "",
       "type": "app_embedded",
-      "options": { "entrypoint": "#/admin/global-sign-in" },
+      "options": { "entrypoint": "http://localhost:3003/#/admin/global-sign-in" },
       "isRequired": true,
       "isBackendOnly": true,
       "order": 40

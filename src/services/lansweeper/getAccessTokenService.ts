@@ -23,7 +23,7 @@ const getAccessTokenService = (
   data.append("redirect_uri", callbackUrl);
 
   return baseRequest<AccessToken>(client, {
-    rawUrl: `${BASE_URL}/integrations/oauth/token`,
+    url: `${BASE_URL}/integrations/oauth/token`,
     data: getQueryParams(data),
     settings: {},
     headers: {

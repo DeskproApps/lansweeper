@@ -7,7 +7,6 @@ import type { Request, FetchOptions } from "../../types";
 
 const baseRequest: Request = async (client, {
   url,
-  rawUrl,
   data,
   method = "POST",
   queryParams = {},
@@ -16,7 +15,7 @@ const baseRequest: Request = async (client, {
 }) => {
   const isAdmin = !settings;
   const dpFetch = await (isAdmin ? adminGenericProxyFetch : proxyFetch)(client);
-  const baseUrl = rawUrl ? rawUrl : `${GRAPHQL_URL}${url || ""}`;
+  const baseUrl = url ?? GRAPHQL_URL;
   const params = getQueryParams(queryParams);
   const body = getRequestBody(data);
   const tokens = parseGlobalAccessToken(settings?.global_access_token);
