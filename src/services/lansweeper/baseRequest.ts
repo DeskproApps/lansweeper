@@ -14,7 +14,8 @@ const baseRequest: Request = async (client, {
   headers: customHeaders,
   settings,
 }) => {
-  const dpFetch = await (!settings ? proxyFetch : adminGenericProxyFetch)(client);
+  const isAdmin = !settings;
+  const dpFetch = await (isAdmin ? adminGenericProxyFetch : proxyFetch)(client);
   const baseUrl = rawUrl ? rawUrl : `${GRAPHQL_URL}${url || ""}`;
   const params = getQueryParams(queryParams);
   const body = getRequestBody(data);
@@ -25,7 +26,7 @@ const baseRequest: Request = async (client, {
     method,
     body,
     headers: {
-      "Authorization": `Bearer ${tokens.access_token || placeholders.ACCESS_TOKEN}`,
+      "Authorization": `Bearer ${isAdmin ? tokens.access_token : placeholders.ACCESS_TOKEN}`,
       "Accept": "application/json",
       ...customHeaders,
     },
