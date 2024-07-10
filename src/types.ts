@@ -18,7 +18,6 @@ export type ApiRequestMethod = "GET" | "POST";
 
 export type RequestParams = {
   url?: string;
-  rawUrl?: string;
   method?: ApiRequestMethod;
   data?: Dict<string>|RequestInit["body"]|V2ProxyRequestInitBody["body"];
   headers?: Dict<string>;

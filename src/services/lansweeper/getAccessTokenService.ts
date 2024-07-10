@@ -1,4 +1,5 @@
 import { getQueryParams } from "../../utils";
+import { BASE_URL } from "../../constants";
 import { baseRequest } from "./baseRequest";
 import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { AccessToken } from "./types";
@@ -22,7 +23,7 @@ const getAccessTokenService = (
   data.append("redirect_uri", callbackUrl);
 
   return baseRequest<AccessToken>(client, {
-    url: "/integrations/oauth/token",
+    url: `${BASE_URL}/integrations/oauth/token`,
     data: getQueryParams(data),
     settings: {},
     headers: {
