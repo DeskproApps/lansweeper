@@ -1,0 +1,1 @@
+export { LinkDevicePage } from "./LinkDevicePage";

@@ -9,9 +9,11 @@ import {
 } from "@deskpro/app-sdk";
 import { isNavigatePayload } from "./utils";
 import {
+  HomePage,
+  LinkDevicePage,
   LoadingAppPage,
-  AdminCallbackPage,
   GlobalSignInPage,
+  AdminCallbackPage,
 } from "./pages";
 import { AppContainer } from "./components/common";
 import type { FC } from "react";
@@ -52,9 +54,11 @@ const App: FC = () => {
   return (
     <AppContainer isAdmin={isAdmin}>
       <Routes>
-        <Route index element={<LoadingAppPage/>} />
         <Route path="/admin/callback" element={<AdminCallbackPage/>}/>
         <Route path="/admin/global-sign-in" element={<GlobalSignInPage/>}/>
+        <Route path="/home" element={<HomePage/>}/>
+        <Route path="/devices/link" element={<LinkDevicePage/>}/>
+        <Route index element={<LoadingAppPage/>} />
       </Routes>
     </AppContainer>
   );
