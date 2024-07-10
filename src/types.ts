@@ -18,7 +18,6 @@ export type ApiRequestMethod = "GET" | "POST";
 
 export type RequestParams = {
   url?: string;
-  rawUrl?: string;
   method?: ApiRequestMethod;
   data?: Dict<string>|RequestInit["body"]|V2ProxyRequestInitBody["body"];
   headers?: Dict<string>;
@@ -36,7 +35,9 @@ export type FetchOptions = Pick<RequestParams, "method"|"headers"> & V2ProxyRequ
 
 /** Deskpro types */
 export type Settings = {
-  //..
+  client_id?: string;
+  client_secret?: string;
+  global_access_token?: string; // JSON which looks like this format: {"access_token":"...","refresh_token":"..."}
 };
 
 export type UserData = {

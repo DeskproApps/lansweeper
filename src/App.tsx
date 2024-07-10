@@ -8,8 +8,12 @@ import {
   useDeskproAppEvents,
 } from "@deskpro/app-sdk";
 import { isNavigatePayload } from "./utils";
-import { LoadingAppPage } from "./pages";
-import { AppContainer } from "./components/commmon";
+import {
+  LoadingAppPage,
+  AdminCallbackPage,
+  GlobalSignInPage,
+} from "./pages";
+import { AppContainer } from "./components/common";
 import type { FC } from "react";
 import type { EventPayload } from "./types";
 
@@ -49,6 +53,8 @@ const App: FC = () => {
     <AppContainer isAdmin={isAdmin}>
       <Routes>
         <Route index element={<LoadingAppPage/>} />
+        <Route path="/admin/callback" element={<AdminCallbackPage/>}/>
+        <Route path="/admin/global-sign-in" element={<GlobalSignInPage/>}/>
       </Routes>
     </AppContainer>
   );

@@ -4,3 +4,5 @@ export { getRequestBody } from "./getRequestBody";
 export { getQueryParams } from "./getQueryParams";
 export { getOptions } from "./getOptions";
 export { getOption } from "./getOption";
+export { gql } from "./gql";
+export { parseGlobalAccessToken } from "./parseGlobalAccessToken";

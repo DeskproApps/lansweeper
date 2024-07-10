@@ -1,6 +1,6 @@
 import { DEFAULT_ERROR } from "../../constants";
 import { LansweeperError } from "../../services/lansweeper";
-import { Container, ErrorBlock } from "../commmon";
+import { Container, ErrorBlock } from "../common";
 import type { FC } from "react";
 import type { FallbackProps } from "react-error-boundary";
 
