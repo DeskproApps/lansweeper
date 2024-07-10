@@ -3,6 +3,7 @@ import { cloneDeep } from "lodash";
 import { useNavigate } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 import { LoadingSpinner } from "@deskpro/app-sdk";
+import { useSetTitle, useRegisterElements } from "../../hooks";
 import { useSearchDevices } from "./hooks";
 import { LinkDevice } from "../../components";
 import type { FC } from "react";
@@ -38,6 +39,15 @@ const LinkDevicePage: FC = () => {
   const onLinkDevices = useCallback(() => {
     //..
   }, []);
+
+  useSetTitle("Link Devices");
+
+  useRegisterElements(({ registerElement }) => {
+    registerElement("home", {
+      type: "home_button",
+      payload: { type: "changePage", path: "/home" },
+    });
+  });
 
   if (isLoading) {
     return (

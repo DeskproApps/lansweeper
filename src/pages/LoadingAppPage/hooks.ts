@@ -1,10 +1,11 @@
 import { useMemo } from "react";
-import { get, isEmpty } from "lodash";
+import { get, size } from "lodash";
 import { useNavigate } from "react-router-dom";
 import {
   useDeskproLatestAppContext,
   useInitialisedDeskproAppClient,
 } from "@deskpro/app-sdk";
+import { getEntityListService } from "../../services/deskpro";
 import { checkAuthService, refreshAccessTokenService } from "../../services/lansweeper";
 import { useAsyncError } from "../../hooks";
 import type { UserContext } from "../../types";
@@ -15,19 +16,20 @@ const useLoadingApp: UseLoadingApp = () => {
   const navigate = useNavigate();
   const { context } = useDeskproLatestAppContext() as { context: UserContext };
   const { asyncErrorHandler } = useAsyncError();
-  const dpUser = useMemo(() => get(context, ["data", "user"]), [context]);
+  const dpUserId = useMemo(() => get(context, ["data", "user", "id"]), [context]);
 
   useInitialisedDeskproAppClient((client) => {
-    if (isEmpty(dpUser)) {
+    if (!dpUserId) {
       return;
     }
 
     checkAuthService(client)
       .catch(() => refreshAccessTokenService(client))
       .then(() => checkAuthService(client))
-      .then(() => navigate("/devices/link"))
+      .then(() => getEntityListService(client, dpUserId))
+      .then((entityIds) => navigate(size(entityIds) ? "/home" : "/devices/link"))
       .catch(asyncErrorHandler)
-  }, [dpUser, asyncErrorHandler]);
+  }, [dpUserId, asyncErrorHandler]);
 };
 
 export { useLoadingApp };

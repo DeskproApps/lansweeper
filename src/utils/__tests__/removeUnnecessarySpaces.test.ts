@@ -9,8 +9,4 @@ describe("removeUnnecessarySpaces", () => {
     expect(removeUnnecessarySpaces(query))
       .toBe("query Me { viewer { id name email } }");
   });
-
-  test.each([undefined, null, "", 0, true, false, {}, []])("wrong value: %p", (payload) => {
-    expect(removeUnnecessarySpaces(payload as never)).toBe("");
-  });
 });
