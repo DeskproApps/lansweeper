@@ -2,7 +2,7 @@
   "name": "@deskpro-apps/lensweeper",
   "title": "Lansweeper",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scope": "agent",
   "isSingleInstall": false,
   "hasDevMode": true,
@@ -35,7 +35,9 @@
       "title": "",
       "default": "",
       "type": "app_embedded",
-      "options": { "entrypoint": "http://localhost:3003/#/admin/global-sign-in" },
+      "options": {
+        "entrypoint": "http://localhost:3003/#/admin/global-sign-in"
+      },
       "isRequired": true,
       "isBackendOnly": true,
       "order": 40
