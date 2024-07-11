@@ -10,7 +10,7 @@ import { getAccessTokenService, getCurrentUserService } from "../../services/lan
 import { getQueryParams } from "../../utils";
 import { DEFAULT_ERROR } from "../../constants";
 import type { Maybe, Settings } from "../../types";
-import type { User } from "../../services/lansweeper/types";
+import type { CurrentUser } from "../../services/lansweeper/types";
 
 const useGlobalSignIn = () => {
     const { client } = useDeskproAppClient();
@@ -18,7 +18,7 @@ const useGlobalSignIn = () => {
     const [ callbackUrl, setCallbackUrl ] = useState<Maybe<string>>(null);
     const [ poll, setPoll ] = useState<Maybe<(() => Promise<{ token: string }>)>>(null);
     const [ isLoading, setIsLoading ] = useState<boolean>(false);
-    const [ user, setUser ] = useState<Maybe<User>>(null);
+    const [ user, setUser ] = useState<Maybe<CurrentUser>>(null);
     const [error, setError] = useState<Maybe<string>>(null);
     const { client_id: clientId, client_secret: clientSecret } = settings;
     const key = useMemo(() => uuidv4(), []);

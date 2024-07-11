@@ -5,8 +5,8 @@ export type Props = {
   text?: string,
 };
 
-const NoFound: FC<Props> = ({ text = "No found" } = {}) => (
+const NotFound: FC<Props> = ({ text = "No found" } = {}) => (
   <P1>{text}</P1>
 );
 
-export { NoFound };
+export { NotFound };

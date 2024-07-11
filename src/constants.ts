@@ -24,6 +24,8 @@ export const placeholders = {
 };
 
 /** Lansweeper */
+export const APP_URL = "https://app.lansweeper.com";
+
 export const BASE_URL = "https://api.lansweeper.com/api";
 
 export const GRAPHQL_URL = `${BASE_URL}/v2/graphql`;

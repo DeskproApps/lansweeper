@@ -3,10 +3,10 @@ import { P1, Button } from "@deskpro/deskpro-ui";
 import { Secondary } from "../../common";
 import type { FC } from "react";
 import type { AnyIcon } from "@deskpro/deskpro-ui";
-import type { User } from "../../../services/lansweeper/types";
+import type { CurrentUser } from "../../../services/lansweeper/types";
 
 export type Props = {
-  user: User;
+  user: CurrentUser;
   signOut: () => void;
 };
 
