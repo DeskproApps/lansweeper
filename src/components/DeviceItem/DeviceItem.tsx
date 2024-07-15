@@ -24,8 +24,8 @@ const DeviceItem: FC<Props> = ({ sites, siteId, device, onClickTitle }) => {
   const onClick = useCallback(() => {
     onClickTitle && onClickTitle();
   }, [onClickTitle]);
-  const os = useMemo(() => getOS(get(device, ["operatingSystem"])), [device]);
-  const capacity = useMemo(() => getHumanCapacity(get(device, ["diskPartitions"])), [device]);
+  const os = getOS(get(device, ["operatingSystem"]));
+  const capacity = getHumanCapacity(get(device, ["diskPartitions"]));
 
   return (
     <>

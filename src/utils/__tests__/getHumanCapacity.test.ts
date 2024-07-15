@@ -7,7 +7,7 @@ const mockPartitions = mockSearchDevices.data.site.assetResources.items[1].diskP
 describe("utils", () => {
   describe("getCapacity", () => {
     test("should return capacity", () => {
-      expect(getHumanCapacity(mockPartitions)).toBe("635.15 / 932.22 GB");
+      expect(getHumanCapacity(mockPartitions)).toBe("681.99 GB / 1 TB");
     });
 
     test("should return null if no partitions", () => {

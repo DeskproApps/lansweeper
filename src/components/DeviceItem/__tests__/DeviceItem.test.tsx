@@ -29,6 +29,6 @@ describe("DeviceItem", () => {
     expect(queryByText(/MacBookPro16,1/i)).toBeInTheDocument();
     expect(queryByText(/Darwin 23\.5\.0/i)).toBeInTheDocument();
     expect(queryByText(/C02ZW1CNMD6W/i)).toBeInTheDocument();
-    expect(queryByText(/635\.15 \/ 932\.22 GB/i)).toBeInTheDocument();
+    expect(queryByText(/681\.99 GB \/ 1 TB/i)).toBeInTheDocument();
   });
 });

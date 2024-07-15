@@ -1,9 +1,11 @@
-import { find, round } from "lodash";
-import { GiB } from "../constants";
+import { find } from "lodash";
+import prettyBytes from "pretty-bytes";
 import type { Maybe } from "../types";
 import type { DiskPartition } from "../services/lansweeper/types";
 
-const bytesToGB = (bytes: number) => bytes / GiB;
+const options = { maximumFractionDigits: 2 };
+
+const pretty = (value: number) => prettyBytes(value, options);
 
 const getHumanCapacity = (partitions?: DiskPartition[]): Maybe<string> => {
   const { available, size } = find(partitions, { mountedOn: "/" }) || {};
@@ -12,7 +14,7 @@ const getHumanCapacity = (partitions?: DiskPartition[]): Maybe<string> => {
     return null;
   }
 
-  return `${round(bytesToGB(available), 2)} / ${round(bytesToGB(size), 2)} GB`;
+  return `${pretty(available)} / ${pretty(size)}`;
 };
 
 export { getHumanCapacity };
