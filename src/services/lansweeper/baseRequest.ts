@@ -13,7 +13,7 @@ const baseRequest: Request = async (client, {
   headers: customHeaders,
   settings,
 }) => {
-  const isAdmin = !settings;
+  const isAdmin = Boolean(settings);
   const dpFetch = await (isAdmin ? adminGenericProxyFetch : proxyFetch)(client);
   const baseUrl = url ?? GRAPHQL_URL;
   const params = getQueryParams(queryParams);

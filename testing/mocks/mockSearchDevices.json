@@ -1,0 +1,86 @@
+{
+  "data": {
+    "site": {
+      "assetResources": {
+        "total": 2,
+        "items": [
+          {
+            "assetBasicInfo": {
+              "name": "ilias-mac-book",
+              "type": "Apple Mac",
+              "mac": "F8:FF:C2:47:F0:93",
+              "subType": "Laptop",
+              "ipAddress": "192.168.88.241"
+            },
+            "key": "2f7110c9-99fd-3850-bbf5-c59a70ddd855",
+            "assetCustom": {
+              "model": "MacBook Pro, 16-inch, 2019",
+              "serialNumber": "some-serial-number"
+            }
+          },
+          {
+            "assetBasicInfo": {
+              "name": "ilia's mac book",
+              "type": "Apple Mac",
+              "ipAddress": "192.168.1.159",
+              "mac": "F8:FF:C2:47:F0:93"
+            },
+            "key": "OC1Bc3NldC1hYzIwMDdhOS01YmUzLTRkNzAtYTljNi01YzVhNjZkYTNmZjc=",
+            "assetCustom": {
+              "manufacturer": "Apple, Inc.",
+              "model": "MacBookPro16,1",
+              "serialNumber": "C02ZW1CNMD6W"
+            },
+            "operatingSystem": {
+              "version": "23.5.0",
+              "name": "macOS 14.5 (23F79)",
+              "caption": "Darwin 23.5.0"
+            },
+            "diskPartitions": [
+              {
+                "mountedOn": "/",
+                "available": 681990000000,
+                "size": 1000968000000
+              },
+              {
+                "mountedOn": "/dev",
+                "available": 0,
+                "size": 198656
+              },
+              {
+                "mountedOn": "/System/Volumes/Preboot",
+                "available": 681990000000,
+                "size": 1000968000000
+              },
+              {
+                "mountedOn": "/System/Volumes/VM",
+                "available": 681990000000,
+                "size": 1000968000000
+              },
+              {
+                "mountedOn": "/System/Volumes/Update",
+                "available": 681990000000,
+                "size": 1000968000000
+              },
+              {
+                "mountedOn": "/System/Volumes/Data",
+                "available": 681990000000,
+                "size": 1000968000000
+              },
+              {
+                "mountedOn": "/System/Volumes/Data/home",
+                "available": 0,
+                "size": 0
+              },
+              {
+                "mountedOn": "/Volumes/Lansweeper IT Agent Discovery",
+                "available": 0,
+                "size": 141615000
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

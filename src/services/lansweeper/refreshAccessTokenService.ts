@@ -1,12 +1,12 @@
 import { setAccessTokenService } from "../deskpro";
-import { placeholders } from "../../constants";
+import { BASE_URL, placeholders } from "../../constants";
 import { baseRequest } from "./baseRequest";
 import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { RefreshToken } from "./types";
 
 const refreshAccessTokenService = (client: IDeskproClient) => {
   return baseRequest<RefreshToken>(client, {
-    url: "/integrations/oauth/token",
+    url: `${BASE_URL}/integrations/oauth/token`,
     data: [
       "grant_type=refresh_token",
       `client_id=${placeholders.CLIENT_ID}`,

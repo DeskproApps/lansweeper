@@ -2,7 +2,7 @@ import { baseRequest } from "./baseRequest";
 import { gql } from "../../utils";
 import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { Settings } from "../../types";
-import type { GQL, User } from "./types";
+import type { GQL, CurrentUser } from "./types";
 
 const getCurrentUserService = (
   client: IDeskproClient,
@@ -23,7 +23,7 @@ const getCurrentUserService = (
     }
   `;
 
-  return baseRequest<GQL<User>>(client, { data: query, settings });
+  return baseRequest<GQL<CurrentUser>>(client, { data: query, settings });
 };
 
 export { getCurrentUserService };

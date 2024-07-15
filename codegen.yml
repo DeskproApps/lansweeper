@@ -1,0 +1,10 @@
+schema:
+  - https://api.lansweeper.com/api/v2/graphql:
+      headers:
+        Authorization: Bearer __ACCESS_TOKEN__
+generates:
+  src/services/lansweeper/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-resolvers"

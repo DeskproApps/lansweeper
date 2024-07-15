@@ -2,11 +2,11 @@ import isEmpty from "lodash/isEmpty";
 import { Login, Logout } from "./blocks";
 import type { FC } from "react";
 import type { Maybe } from "../../types";
-import type { User } from "../../services/lansweeper/types";
+import type { CurrentUser } from "../../services/lansweeper/types";
 
 export type Props = {
     callbackUrl: Maybe<string>;
-    user: Maybe<User>;
+    user: Maybe<CurrentUser>;
     signOut: () => void;
     oAuthUrl: Maybe<string>;
     error: Maybe<string>;
