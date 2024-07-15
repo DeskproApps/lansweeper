@@ -1,8 +1,8 @@
 import { P1 } from "@deskpro/deskpro-ui";
-import type { FC } from "react";
+import type { FC, ReactNode } from "react";
 
 export type Props = {
-  text?: string,
+  text?: ReactNode;
 };
 
 const NotFound: FC<Props> = ({ text = "No found" } = {}) => (

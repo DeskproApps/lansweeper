@@ -1,3 +1,11 @@
+/** Common */
+export const INPUT_DEBOUNCE = 500;
+
+export const BYTE = 1;
+export const KiB = BYTE * 1024;
+export const MiB = KiB * 1024;
+export const GiB = MiB * 1024;
+
 /** Typo */
 export const nbsp = "\u00A0";
 

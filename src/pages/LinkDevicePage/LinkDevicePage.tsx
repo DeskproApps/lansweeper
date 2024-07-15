@@ -10,6 +10,7 @@ import {
 import { setEntityService } from "../../services/deskpro";
 import { useSetTitle, useRegisterElements, useAsyncError } from "../../hooks";
 import { useSearchDevices } from "./hooks";
+import { INPUT_DEBOUNCE } from "../../constants";
 import { LinkDevice } from "../../components";
 import type { FC } from "react";
 import type { Maybe, UserContext } from "../../types";
@@ -27,7 +28,7 @@ const LinkDevicePage: FC = () => {
   const { isLoading, isFetching, sites, devices } = useSearchDevices(siteId, searchQuery);
   const dpUserId = useMemo(() => get(context, ["data", "user", "id"]), [context]);
 
-  const onChangeSearchQuery = useDebouncedCallback(setSearchQuery, 1000);
+  const onChangeSearchQuery = useDebouncedCallback(setSearchQuery, INPUT_DEBOUNCE);
 
   const onCancel = useCallback(() => navigate("/home"), [navigate]);
 

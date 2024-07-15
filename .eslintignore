@@ -6,4 +6,5 @@ node_modules/
 lib
 storybook-static
 .storybook
+# generated automatically by command `pnpm generate:types`
 src/services/lansweeper/schema.ts

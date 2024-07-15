@@ -1,10 +1,10 @@
 import { useMemo, useCallback } from "react";
 import { get, find } from "lodash";
-import { Link, Title, TwoProperties } from "@deskpro/app-sdk";
+import { Title, TwoProperties } from "@deskpro/app-sdk";
 import { useExternalLinks } from "../../hooks";
-import { getOS, getCapacity } from "../../utils";
-import { LansweeperLogo } from "../common";
-import type { FC, MouseEventHandler } from "react";
+import { getOS, getHumanCapacity } from "../../utils";
+import { ButtonAsLink, LansweeperLogo } from "../common";
+import type { FC } from "react";
 import type { Maybe } from "../../types";
 import type { Site, Device } from "../../services/lansweeper/types";
 
@@ -21,12 +21,11 @@ const DeviceItem: FC<Props> = ({ sites, siteId, device, onClickTitle }) => {
   const link = useMemo(() => {
     return getDeviceLink(site?.name, device.key);
   }, [site?.name, device.key, getDeviceLink]);
-  const onClick: MouseEventHandler<HTMLAnchorElement> = useCallback((e) => {
-    e.preventDefault();
+  const onClick = useCallback(() => {
     onClickTitle && onClickTitle();
   }, [onClickTitle]);
   const os = useMemo(() => getOS(get(device, ["operatingSystem"])), [device]);
-  const capacity = useMemo(() => getCapacity(get(device, ["diskPartitions"])), [device]);
+  const capacity = useMemo(() => getHumanCapacity(get(device, ["diskPartitions"])), [device]);
 
   return (
     <>
@@ -34,9 +33,12 @@ const DeviceItem: FC<Props> = ({ sites, siteId, device, onClickTitle }) => {
         title={!onClickTitle
           ? get(device, ["assetBasicInfo", "name"])
           : (
-            <Link href="#" onClick={onClick}>
+            <ButtonAsLink
+              type="button"
+              onClick={onClick}
+            >
               {get(device, ["assetBasicInfo", "name"])}
-            </Link>
+            </ButtonAsLink>
           )
         }
         {...(!link ? {} : { icon: <LansweeperLogo/> })}
