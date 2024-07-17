@@ -35,7 +35,7 @@ export type CurrentUser = {
   me: Pick<Me, "id"|"username"|"email"|"name"|"surname"|"fullName"|"imageUrl"|"language">;
 };
 
-export type Site = Pick<SiteType, "id"|"name"|"companyName">;
+export type Site = Pick<SiteType, "id"|"name"|"brandingName">;
 
 export type Profile = {
   site: Site;
@@ -57,11 +57,21 @@ export type Device = {
   operatingSystem: Pick<OperatingSystem, "caption"|"name"|"version">;
 };
 
+export type AssetResources = {
+  items: Device[];
+  total: number;
+};
+
 export type SearchResponce = {
   site: {
-    assetResources: {
-      items: Device[];
-      total: number;
-    },
-  }
+    assetResources: AssetResources;
+  };
+};
+
+export type DevicesResponse = {
+  authorizedSites: {
+    sites: Array<Site & {
+      assetResources: AssetResources;
+    }>;
+  };
 };

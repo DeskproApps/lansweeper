@@ -13,8 +13,8 @@ import { useSearchDevices } from "./hooks";
 import { INPUT_DEBOUNCE } from "../../constants";
 import { LinkDevice } from "../../components";
 import type { FC } from "react";
-import type { Maybe, UserContext } from "../../types";
-import type { Site, Device } from "../../services/lansweeper/types";
+import type { Maybe, UserContext, DeviceType } from "../../types";
+import type { Site } from "../../services/lansweeper/types";
 
 const LinkDevicePage: FC = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const LinkDevicePage: FC = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [siteId, setSiteId] = useState<Maybe<Site["id"]>>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedDevices, setSelectedDevices] = useState<Device[]>([]);
+  const [selectedDevices, setSelectedDevices] = useState<DeviceType[]>([]);
   const { isLoading, isFetching, sites, devices } = useSearchDevices(siteId, searchQuery);
   const dpUserId = useMemo(() => get(context, ["data", "user", "id"]), [context]);
 
@@ -32,7 +32,7 @@ const LinkDevicePage: FC = () => {
 
   const onCancel = useCallback(() => navigate("/home"), [navigate]);
 
-  const onChangeSelectedDevice = useCallback((device: Device) => {
+  const onChangeSelectedDevice = useCallback((device: DeviceType) => {
     let newSelectedDevices = cloneDeep(selectedDevices);
 
     if (selectedDevices.some((selectedDevice) => device.key === selectedDevice.key)) {

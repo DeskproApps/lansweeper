@@ -15,7 +15,7 @@ type Props = {
 };
 
 const Filters: FC<Props> = ({ sites, siteId, isFetching, onChangeSearchQuery, onChangeSite }) => {
-  const options = useMemo(() => getOptions(sites, "companyName"), [sites]);
+  const options = useMemo(() => getOptions(sites, "brandingName"), [sites]);
 
   return (
     <>

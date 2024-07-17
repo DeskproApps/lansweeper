@@ -1,23 +1,20 @@
 import { useMemo, useCallback } from "react";
-import { get, find } from "lodash";
-import { Title, TwoProperties } from "@deskpro/app-sdk";
+import { get } from "lodash";
+import { Title, Property, TwoProperties } from "@deskpro/app-sdk";
 import { useExternalLinks } from "../../hooks";
 import { getOS, getHumanCapacity } from "../../utils";
 import { ButtonAsLink, LansweeperLogo } from "../common";
 import type { FC } from "react";
-import type { Maybe } from "../../types";
-import type { Site, Device } from "../../services/lansweeper/types";
+import type { DeviceType } from "../../types";
 
 export type Props = {
-  device: Device;
-  sites: Site[];
-  siteId: Maybe<Site["id"]>;
+  device: DeviceType;
   onClickTitle?: () => void,
 };
 
-const DeviceItem: FC<Props> = ({ sites, siteId, device, onClickTitle }) => {
+const DeviceItem: FC<Props> = ({ device, onClickTitle }) => {
   const { getDeviceLink } = useExternalLinks();
-  const site = useMemo(() => find(sites, { id: siteId }), [sites, siteId]) as Maybe<Site>;
+  const site = device.site;
   const link = useMemo(() => {
     return getDeviceLink(site?.name, device.key);
   }, [site?.name, device.key, getDeviceLink]);
@@ -45,17 +42,18 @@ const DeviceItem: FC<Props> = ({ sites, siteId, device, onClickTitle }) => {
         {...(!link ? {} : { link })}
       />
       <TwoProperties
-        leftLabel="Model"
-        leftText={get(device, ["assetCustom", "model"])}
-        rightLabel="OS"
-        rightText={os}
+        leftLabel="Site"
+        leftText={site?.brandingName || site?.name}
+        rightLabel="Model"
+        rightText={get(device, ["assetCustom", "model"])}
       />
       <TwoProperties
-        leftLabel="Serial number"
-        leftText={get(device, ["assetCustom", "serialNumber"])}
-        rightLabel="Storage capacity"
-        rightText={capacity}
+        leftLabel="OS"
+        leftText={os}
+        rightLabel="Serial number"
+        rightText={get(device, ["assetCustom", "serialNumber"])}
       />
+      <Property label="Storage capacity" text={capacity} />
     </>
   );
 };

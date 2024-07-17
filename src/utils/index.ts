@@ -8,3 +8,4 @@ export { gql } from "./gql";
 export { parseGlobalAccessToken } from "./parseGlobalAccessToken";
 export { getHumanCapacity } from "./getHumanCapacity";
 export { getOS } from "./getOS";
+export { enhanceDevices, enhanceSearchDevices } from "./enhanceDevice";
