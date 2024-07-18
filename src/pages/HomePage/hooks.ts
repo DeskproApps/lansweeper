@@ -4,11 +4,11 @@ import {
   useQueryWithClient,
   useDeskproLatestAppContext,
 } from "@deskpro/app-sdk";
-import { getEntityListService } from "../../services/deskpro";
-import { getDevicesService } from "../../services/lansweeper";
-import { enhanceDevices } from "../../utils";
-import { QueryKey } from "../../query";
-import type { DeviceType, UserContext } from "../../types";
+import { getEntityListService } from "@/services/deskpro";
+import { getDevicesService } from "@/services/lansweeper";
+import { enhanceDevices } from "@/utils";
+import { QueryKey } from "@/query";
+import type { DeviceType, UserContext } from "@/types";
 
 type UseLinkedDevices = () => {
   isLoading: boolean;

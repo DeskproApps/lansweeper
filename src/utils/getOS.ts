@@ -1,6 +1,6 @@
 import { get, trim } from "lodash";
-import type { Maybe } from "../types";
-import type { Device } from "../services/lansweeper/types";
+import type { Maybe } from "@/types";
+import type { Device } from "@/services/lansweeper/types";
 
 const getOS = (operatingSystem?: Device["operatingSystem"]): Maybe<string> => {
   const caption = get(operatingSystem, ["caption"]);

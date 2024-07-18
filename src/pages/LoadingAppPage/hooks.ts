@@ -5,10 +5,10 @@ import {
   useDeskproLatestAppContext,
   useInitialisedDeskproAppClient,
 } from "@deskpro/app-sdk";
-import { getEntityListService } from "../../services/deskpro";
-import { checkAuthService, refreshAccessTokenService } from "../../services/lansweeper";
-import { useAsyncError } from "../../hooks";
-import type { UserContext } from "../../types";
+import { getEntityListService } from "@/services/deskpro";
+import { checkAuthService, refreshAccessTokenService } from "@/services/lansweeper";
+import { useAsyncError } from "@/hooks";
+import type { UserContext } from "@/types";
 
 type UseLoadingApp = () => void;
 

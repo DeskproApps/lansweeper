@@ -1,11 +1,11 @@
 import { useMemo, useCallback } from "react";
 import { get } from "lodash";
 import { Title, Property, TwoProperties } from "@deskpro/app-sdk";
-import { useExternalLinks } from "../../hooks";
-import { getOS, getHumanCapacity } from "../../utils";
-import { ButtonAsLink, LansweeperLogo } from "../common";
+import { useExternalLinks } from "@/hooks";
+import { getOS, getHumanCapacity } from "@/utils";
+import { ButtonAsLink, LansweeperLogo } from "@/components/common";
 import type { FC } from "react";
-import type { DeviceType } from "../../types";
+import type { DeviceType } from "@/types";
 
 export type Props = {
   device: DeviceType;

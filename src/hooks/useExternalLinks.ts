@@ -1,7 +1,7 @@
 import { useCallback } from "react";
-import { APP_URL } from "../constants";
-import type { Maybe } from "../types";
-import type { Site, Device } from "../services/lansweeper/types";
+import { APP_URL } from "@/constants";
+import type { Maybe } from "@/types";
+import type { Site, Device } from "@/services/lansweeper/types";
 
 type GetDeviceLink = (siteName?: Site["name"], deviceKey?: Device["key"]) => Maybe<string>;
 

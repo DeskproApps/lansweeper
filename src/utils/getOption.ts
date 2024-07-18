@@ -1,6 +1,6 @@
 import { startCase } from "lodash";
 import type { DropdownValueType } from "@deskpro/deskpro-ui";
-import type { Option } from "../types";
+import type { Option } from "@/types";
 
 const getOption = <Value>(
   value: Value,

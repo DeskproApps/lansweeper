@@ -2,10 +2,10 @@ import { Fragment } from "react";
 import { map, isEmpty } from "lodash";
 import { Checkbox } from "@deskpro/deskpro-ui";
 import { LoadingSpinner, HorizontalDivider } from "@deskpro/app-sdk";
-import { Card, NotFound } from "../../common";
-import { DeviceItem } from "../../DeviceItem";
+import { Card, NotFound } from "@/components/common";
+import { DeviceItem } from "@/components/DeviceItem";
 import type { FC } from "react";
-import type { DeviceType } from "../../../types";
+import type { DeviceType } from "@/types";
 
 export type Props = {
   isLoading: boolean;

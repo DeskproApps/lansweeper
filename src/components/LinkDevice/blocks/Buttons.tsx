@@ -1,8 +1,8 @@
 import size from "lodash/size";
 import { Stack } from "@deskpro/deskpro-ui";
-import { Button } from "../../common";
+import { Button } from "@/components/common";
 import type { FC } from "react";
-import type { Device } from "../../../services/lansweeper/types";
+import type { Device } from "@/services/lansweeper/types";
 
 export type Props = {
   isSubmitting: boolean;

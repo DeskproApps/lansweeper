@@ -1,5 +1,5 @@
 import { get } from "lodash";
-import type { Settings } from "../types";
+import type { Settings } from "@/types";
 
 type ParseGlobalAccessToken = (tokens?: Settings["global_access_token"]) => {
   access_token: string;

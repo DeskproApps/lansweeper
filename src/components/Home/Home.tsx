@@ -2,9 +2,9 @@ import { Fragment } from "react";
 import { map, isEmpty } from "lodash";
 import { HorizontalDivider } from "@deskpro/app-sdk";
 import { Container, NotFound } from "../common";
-import { DeviceItem } from "../DeviceItem";
+import { DeviceItem } from "@/components/DeviceItem";
 import type { FC } from "react";
-import type { DeviceType } from "../../types";
+import type { DeviceType } from "@/types";
 
 export type Props = {
   devices: DeviceType[];

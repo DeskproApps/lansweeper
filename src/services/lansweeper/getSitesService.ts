@@ -1,5 +1,5 @@
 import { baseRequest } from "./baseRequest";
-import { gql } from "../../utils";
+import { gql } from "@/utils";
 import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { GQL, SiteResponse } from "./types";
 

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { reduce } from "lodash";
 import { removeUnnecessarySpaces } from "./removeUnnecessarySpaces";
-import type { Dict } from "../types";
+import type { Dict } from "@/types";
 
 type GqlParams = Dict<any>;
 

@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { Search, Select } from "@deskpro/app-sdk";
-import { Label } from "../../common";
-import { getOptions } from "../../../utils";
+import { Label } from "@/components/common";
+import { getOptions } from "@/utils";
 import type { FC } from "react";
-import type { Maybe } from "../../../types";
-import type { Site } from "../../../services/lansweeper/types";
+import type { Maybe } from "@/types";
+import type { Site } from "@/services/lansweeper/types";
 
 type Props = {
   sites: Site[];

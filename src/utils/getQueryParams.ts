@@ -2,7 +2,7 @@ import { createSearchParams } from "react-router-dom";
 import { isEmpty, isString, isPlainObject } from "lodash";
 import { isForm } from "./isForm";
 import type { ParamKeyValuePair } from "react-router-dom";
-import type { Dict, RequestParams } from "../types";
+import type { Dict, RequestParams } from "@/types";
 
 const getQueryParams = (data?: RequestParams["queryParams"]|RequestInit["body"]): string => {
   if (isEmpty(data) && !isForm(data)) {

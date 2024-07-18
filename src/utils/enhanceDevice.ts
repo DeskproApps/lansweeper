@@ -1,6 +1,6 @@
 import { get, map, omit, concat, assign, reduce, isEmpty } from "lodash";
-import type { DeviceType } from "../types";
-import type { Site, Device, DevicesResponse, SearchResponce } from "../services/lansweeper/types";
+import type { DeviceType } from "@/types";
+import type { Site, Device, DevicesResponse, SearchResponce } from "@/services/lansweeper/types";
 
 const enhance = (devices: Device[], site: Site) => {
   return map(devices, (d) => assign({}, d, { site }));
