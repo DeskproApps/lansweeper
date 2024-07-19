@@ -8,16 +8,17 @@ import type { DeviceType } from "@/types";
 
 export type Props = {
   devices: DeviceType[];
+  onNavigateToDevice: (deviceKey: DeviceType["key"]) => void;
 };
 
-const Home: FC<Props> = ({ devices }) => {
+const Home: FC<Props> = ({ devices, onNavigateToDevice }) => {
   return (
     <Container>
       {isEmpty(devices) ? (
         <NotFound text="No devices found" />
       ) : map(devices, (device) => (
         <Fragment key={device.key}>
-          <DeviceItem device={device}  />
+          <DeviceItem device={device} onClickTitle={() => onNavigateToDevice(device.key)} />
           <HorizontalDivider style={{ marginBottom: 14 }}/>
         </Fragment>
       ))}

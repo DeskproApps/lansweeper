@@ -9,3 +9,4 @@ export { parseGlobalAccessToken } from "./parseGlobalAccessToken";
 export { getHumanCapacity } from "./getHumanCapacity";
 export { getOS } from "./getOS";
 export { enhanceDevices, enhanceSearchDevices } from "./enhanceDevice";
+export { isUnlinkPayload } from "./isUnlinkPayload";

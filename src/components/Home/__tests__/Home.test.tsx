@@ -7,7 +7,10 @@ import type { Props } from "../Home";
 const mockDevices = mock.data.authorizedSites.sites[0].assetResources.items;
 
 const renderHome = (props?: Partial<Props>) => render((
-  <Home devices={props?.devices ?? mockDevices as never} />
+  <Home
+    devices={props?.devices ?? mockDevices as never}
+    onNavigateToDevice={props?.onNavigateToDevice || jest.fn()}
+  />
 ), { wrappers: { theme: true } });
 
 describe("LinkDevices", () => {

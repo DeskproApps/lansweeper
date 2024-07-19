@@ -7,9 +7,11 @@ import {
   useDeskproAppClient,
   useDeskproAppEvents,
 } from "@deskpro/app-sdk";
-import { isNavigatePayload } from "./utils";
+import { useUnlinkDevice } from "@/hooks";
+import { isNavigatePayload, isUnlinkPayload } from "@/utils";
 import {
   HomePage,
+  DevicePage,
   LinkDevicePage,
   LoadingAppPage,
   GlobalSignInPage,
@@ -23,6 +25,7 @@ const App: FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { client } = useDeskproAppClient();
+  const { unlink, isLoading } = useUnlinkDevice();
   const isAdmin = pathname.includes("/admin/");
 
   useDeskproElements(({ registerElement }) => {
@@ -31,11 +34,8 @@ const App: FC = () => {
 
   const debounceElementEvent = useDebouncedCallback((_, __, payload: EventPayload) => {
     return match(payload.type)
-      .with("changePage", () => {
-        if (isNavigatePayload(payload)) {
-          navigate(payload.path);
-        }
-      })
+      .with("changePage", () => (isNavigatePayload(payload) && navigate(payload.path)))
+      .with("unlink", () => (isUnlinkPayload(payload) && unlink(payload.device)))
       .run();
   }, 500);
 
@@ -45,7 +45,7 @@ const App: FC = () => {
     onElementEvent: debounceElementEvent,
   }, [client]);
 
-  if (!client) {
+  if (!client || isLoading) {
     return (
       <LoadingSpinner/>
     );
@@ -58,6 +58,7 @@ const App: FC = () => {
         <Route path="/admin/global-sign-in" element={<GlobalSignInPage/>}/>
         <Route path="/home" element={<HomePage/>}/>
         <Route path="/devices/link" element={<LinkDevicePage/>}/>
+        <Route path="/devices/:deviceKey" element={<DevicePage/>}/>
         <Route index element={<LoadingAppPage/>} />
       </Routes>
     </AppContainer>
