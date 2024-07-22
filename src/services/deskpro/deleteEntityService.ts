@@ -1,6 +1,6 @@
-import { ENTITY } from "../../constants";
+import { ENTITY } from "@/constants";
 import type { IDeskproClient } from "@deskpro/app-sdk";
-import type { UserData } from "../../types";
+import type { UserData } from "@/types";
 
 const deleteEntityService = (
   client: IDeskproClient,

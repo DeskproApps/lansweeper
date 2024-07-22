@@ -15,8 +15,8 @@ const DeviceDetails: FC<Props> = ({ device }) => {
   const { getDeviceLink } = useExternalLinks();
   const site = device.site;
   const link = useMemo(() => {
-    return getDeviceLink(site?.name, device.key);
-  }, [site?.name, device.key, getDeviceLink]);
+    return getDeviceLink(site.name, device.key);
+  }, [site.name, device.key, getDeviceLink]);
   const os = getOS(get(device, ["operatingSystem"]));
   const capacity = getHumanCapacity(get(device, ["diskPartitions"]));
 
@@ -24,12 +24,12 @@ const DeviceDetails: FC<Props> = ({ device }) => {
     <Container>
       <Title
         title={get(device, ["assetBasicInfo", "name"])}
-        {...(!link ? {} : { icon: <LansweeperLogo/> })}
-        {...(!link ? {} : { link })}
+        {...(link ? { icon: <LansweeperLogo/> } : {})}
+        {...(link ? { link } : {})}
       />
       <Property
         label="Site"
-        text={site?.brandingName || site?.name}
+        text={site.brandingName || site.name}
       />
       <Property
         label="Model"

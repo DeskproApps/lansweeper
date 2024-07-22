@@ -1,5 +1,5 @@
 import { has } from "lodash";
-import type { EventPayload, UnlinkPayload } from "../types";
+import type { EventPayload, UnlinkPayload } from "@/types";
 
 const isUnlinkPayload = (
   payload: EventPayload,

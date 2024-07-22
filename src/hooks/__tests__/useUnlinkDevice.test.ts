@@ -3,13 +3,14 @@ import { cleanup, renderHook, act } from "@testing-library/react";
 import { useNavigate } from "react-router-dom";
 import { deleteEntityService } from "../../services/deskpro";
 import { useUnlinkDevice } from "../useUnlinkDevice";
-import { mockDevices } from "../../../testing";
+import { mockDevices } from "@/testing";
 import type { Result } from "../useUnlinkDevice";
+import type { DeviceType } from "@/types";
 
 const mockDevice = {
   site: omit(mockDevices.data.authorizedSites.sites[0], ["assetResources"]),
   ...mockDevices.data.authorizedSites.sites[0].assetResources.items[1],
-};
+} as DeviceType;
 
 
 const renderUnlinkDevice = () => renderHook<Result, unknown>(() => useUnlinkDevice());
@@ -36,7 +37,7 @@ describe("useUnlinkDevice", () => {
 
     try {
       await act(async () => {
-        await result.current.unlink(mockDevice as never);
+        await result.current.unlink(mockDevice);
       })
     } catch (e) {
       expect(deleteEntityService).toHaveBeenCalled();
@@ -52,7 +53,7 @@ describe("useUnlinkDevice", () => {
     const { result } = renderUnlinkDevice();
 
     await act(async () => {
-      await result.current.unlink(mockDevice as never);
+      await result.current.unlink(mockDevice);
     })
 
     expect(deleteEntityService).toHaveBeenCalled();
@@ -67,7 +68,7 @@ describe("useUnlinkDevice", () => {
     const { result } = renderUnlinkDevice();
 
     await act(async () => {
-      await result.current.unlink(null as never);
+      await result.current.unlink(null);
     })
 
     expect(deleteEntityService).not.toHaveBeenCalled();

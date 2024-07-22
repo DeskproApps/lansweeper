@@ -16,7 +16,7 @@
     "generate:types": "graphql-codegen"
   },
   "dependencies": {
-    "@deskpro/app-sdk": "^3.0.20",
+    "@deskpro/app-sdk": "^3.0.22",
     "@deskpro/deskpro-ui": "^7.18.0",
     "@graphql-codegen/cli": "^5.0.2",
     "@graphql-codegen/typescript": "^4.0.9",

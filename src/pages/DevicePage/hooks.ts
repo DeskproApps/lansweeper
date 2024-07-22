@@ -20,11 +20,11 @@ const useDevice: UseDevice = (deviceKey) => {
 
   const devices = useMemo(() => enhanceDevices(get(devicesResponse.data, ["data"])), [devicesResponse.data])
 
-  const device = useMemo(() => find(devices, { key: deviceKey }), [deviceKey, devices]);
+  const device = useMemo(() => find(devices, { key: deviceKey }) as DeviceType, [deviceKey, devices]);
 
   return {
     isLoading: [devicesResponse].some(({ isLoading }) => isLoading),
-    device: device as DeviceType,
+    device,
   };
 };
 
