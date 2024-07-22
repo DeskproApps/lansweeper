@@ -24,8 +24,8 @@ const DeviceDetails: FC<Props> = ({ device }) => {
     <Container>
       <Title
         title={get(device, ["assetBasicInfo", "name"])}
-        {...(!link ? {} : { icon: <LansweeperLogo/> })}
-        {...(!link ? {} : { link })}
+        {...(link ? { icon: <LansweeperLogo/> } : {})}
+        {...(link ? { link } : {})}
       />
       <Property
         label="Site"

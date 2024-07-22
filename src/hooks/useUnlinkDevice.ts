@@ -2,9 +2,9 @@ import { useState, useCallback } from "react";
 import { get } from "lodash";
 import { useNavigate } from "react-router-dom";
 import { useDeskproAppClient, useDeskproLatestAppContext } from "@deskpro/app-sdk";
-import { deleteEntityService } from "../services/deskpro";
+import { deleteEntityService } from "@/services/deskpro";
 import { useAsyncError } from "./useAsyncError";
-import type { UserContext } from "../types";
+import type { UserContext } from "@/types";
 import type { Maybe, DeviceType } from "@/types";
 
 export type Result = {
