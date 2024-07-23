@@ -1,5 +1,5 @@
 import { useMemo, useCallback } from "react";
-import { get } from "lodash";
+import { get } from "lodash-es";
 import { Title, Property, TwoProperties } from "@deskpro/app-sdk";
 import { useExternalLinks } from "../../hooks";
 import { getOS, getHumanCapacity } from "../../utils";

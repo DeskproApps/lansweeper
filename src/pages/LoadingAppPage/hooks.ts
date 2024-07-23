@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { get, size } from "lodash";
+import { get, size } from "lodash-es";
 import { useNavigate } from "react-router-dom";
 import {
   useDeskproLatestAppContext,

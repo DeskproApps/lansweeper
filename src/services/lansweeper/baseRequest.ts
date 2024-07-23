@@ -1,4 +1,4 @@
-import { isEmpty } from "lodash";
+import { isEmpty } from "lodash-es";
 import { proxyFetch, adminGenericProxyFetch } from "@deskpro/app-sdk";
 import { GRAPHQL_URL, placeholders } from "../../constants";
 import { getQueryParams, getRequestBody, parseGlobalAccessToken } from "../../utils";

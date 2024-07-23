@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect, useCallback } from "react";
-import { get, size, cloneDeep } from "lodash";
+import { get, size, cloneDeep } from "lodash-es";
 import { useNavigate } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 import {

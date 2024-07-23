@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { get, find, reduce, concat } from "lodash";
+import { get, find, reduce, concat } from "lodash-es";
 import { useQueryWithClient } from "@deskpro/app-sdk";
 import { getSitesService, searchDevicesService } from "../../services/lansweeper";
 import { enhanceSearchDevices } from "../../utils";

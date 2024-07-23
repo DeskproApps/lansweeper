@@ -1,4 +1,4 @@
-import { get, trim } from "lodash";
+import { get, trim } from "lodash-es";
 import type { Maybe } from "../types";
 import type { Device } from "../services/lansweeper/types";
 

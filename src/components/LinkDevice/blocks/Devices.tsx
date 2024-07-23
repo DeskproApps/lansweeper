@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { map, isEmpty } from "lodash";
+import { map, isEmpty } from "lodash-es";
 import { Checkbox } from "@deskpro/deskpro-ui";
 import { LoadingSpinner, HorizontalDivider } from "@deskpro/app-sdk";
 import { Card, NotFound } from "../../common";

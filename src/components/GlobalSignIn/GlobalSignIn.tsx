@@ -1,4 +1,4 @@
-import isEmpty from "lodash/isEmpty";
+import { isEmpty } from "lodash-es";
 import { Login, Logout } from "./blocks";
 import type { FC } from "react";
 import type { Maybe } from "../../types";

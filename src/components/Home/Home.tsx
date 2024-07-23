@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { map, isEmpty } from "lodash";
+import { map, isEmpty } from "lodash-es";
 import { HorizontalDivider } from "@deskpro/app-sdk";
 import { Container, NotFound } from "../common";
 import { DeviceItem } from "../DeviceItem";

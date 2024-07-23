@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { get, size } from "lodash";
+import { get, size } from "lodash-es";
 import {
   useQueryWithClient,
   useDeskproLatestAppContext,
@@ -8,7 +8,7 @@ import { getEntityListService } from "../../services/deskpro";
 import { getDevicesService } from "../../services/lansweeper";
 import { enhanceDevices } from "../../utils";
 import { QueryKey } from "../../query";
-import type { DeviceType, UserContext } from "../../types";
+import type { DPUser, DeviceType, UserContext } from "../../types";
 
 type UseLinkedDevices = () => {
   isLoading: boolean;
@@ -20,8 +20,8 @@ const useLinkedDevices: UseLinkedDevices = () => {
   const dpUserId = get(context, ["data", "user", "id"]);
 
   const linkedIds = useQueryWithClient(
-    [QueryKey.LINKED_DEVICES, dpUserId],
-    (client) => getEntityListService(client, dpUserId),
+    [QueryKey.LINKED_DEVICES, dpUserId as DPUser["id"]],
+    (client) => getEntityListService(client, dpUserId as DPUser["id"]),
     { enabled: Boolean(dpUserId) },
   );
 

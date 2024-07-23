@@ -1,4 +1,4 @@
-import { get, map, omit, concat, assign, reduce, isEmpty } from "lodash";
+import { get, map, omit, concat, assign, reduce, isEmpty } from "lodash-es";
 import type { DeviceType } from "../types";
 import type { Site, Device, DevicesResponse, SearchResponce } from "../services/lansweeper/types";
 
