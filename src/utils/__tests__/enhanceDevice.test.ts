@@ -20,7 +20,7 @@ describe("utils", () => {
   describe("enhanceSearchDevices", () => {
     test("should return array of enhanced devices", () => {
       const site = mockSites.data.me.profiles[0].site;
-      expect(enhanceSearchDevices(site, mockSearchDevices.data as never)).toMatchObject([
+      expect(enhanceSearchDevices(mockSearchDevices.data as never, site)).toMatchObject([
         {
           key: "2f7110c9-99fd-3850-bbf5-c59a70ddd855",
           site: { id: "f866faed-6835-4269-8364-589ceb28cc84" },

@@ -4,10 +4,10 @@ import { useExternalLinks } from "../../hooks";
 import { getOS, getHumanCapacity } from "../../utils";
 import { ButtonAsLink, LansweeperLogo } from "../common";
 import type { FC } from "react";
-import type { Maybe, DeviceType } from "../../types";
+import type { DeviceType } from "../../types";
 
 export type Props = {
-  device: Maybe<DeviceType>;
+  device: DeviceType;
   onClickTitle?: () => void,
 };
 

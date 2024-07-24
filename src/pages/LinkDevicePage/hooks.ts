@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { find, reduce, concat } from "lodash-es";
+import { reduce, concat } from "lodash-es";
 import { useQueryWithClient } from "@deskpro/app-sdk";
 import { getSitesService, searchDevicesService } from "../../services/lansweeper";
 import { enhanceSearchDevices } from "../../utils";
@@ -34,7 +34,7 @@ const useSearchDevices: UseSearchDevices = (siteId, q) => {
   );
 
   const devices: DeviceType[] = useMemo(() => {
-    return enhanceSearchDevices(find(sites, { id: siteId }) as Site, devicesResponce.data?.data);
+    return enhanceSearchDevices(devicesResponce.data?.data, sites.find(({ id }) => id === siteId) as Site);
   }, [siteId, devicesResponce.data, sites]);
 
   return {

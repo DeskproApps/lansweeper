@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { get } from "lodash-es";
 import {
   useQueryWithClient,
   useDeskproLatestAppContext,
@@ -17,7 +16,7 @@ type UseLinkedDevices = () => {
 
 const useLinkedDevices: UseLinkedDevices = () => {
   const { context } = useDeskproLatestAppContext() as { context: UserContext };
-  const dpUserId = get(context, ["data", "user", "id"]);
+  const dpUserId = context?.data?.user.id;
 
   const linkedIds = useQueryWithClient(
     [QueryKey.LINKED_DEVICES, dpUserId as DPUser["id"]],
@@ -33,7 +32,7 @@ const useLinkedDevices: UseLinkedDevices = () => {
 
   return {
     isLoading: [linkedIds, devices].some(({ isLoading }) => isLoading),
-    devices: useMemo(() => enhanceDevices(get(devices.data, ["data"])), [devices.data]),
+    devices: useMemo(() => enhanceDevices(devices.data?.data), [devices.data]),
   };
 };
 
