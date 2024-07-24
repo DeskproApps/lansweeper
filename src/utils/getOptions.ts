@@ -1,13 +1,13 @@
-import { get, size } from "lodash-es";
 import { getOption } from "./getOption";
+import type { ReactNode } from "react";
 
-const getOptions = <T>(items?: T[], key?: keyof T) => {
-  if (!Array.isArray(items) || !size(items)) {
+const getOptions = <T extends { id: string; [key: string]: ReactNode }>(items?: T[], key?: keyof T) => {
+  if (!Array.isArray(items) || items.length <= 0) {
     return [];
   }
 
   return items.map((item) => {
-    return getOption(get(item, ["id"]), get(item, [key || "name"]));
+    return getOption(item.id, item[key || "name"]);
   });
 };
 

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { get, size } from "lodash-es";
+import { get } from "lodash-es";
 import {
   useQueryWithClient,
   useDeskproLatestAppContext,
@@ -28,7 +28,7 @@ const useLinkedDevices: UseLinkedDevices = () => {
   const devices = useQueryWithClient(
     [QueryKey.DEVICES, ...(Array.isArray(linkedIds.data) ? linkedIds.data : []) as string[]],
     (client) => getDevicesService(client, linkedIds.data as string[]),
-    { enabled: size(linkedIds.data) > 0 },
+    { enabled: (Array.isArray(linkedIds.data) ? linkedIds.data : []).length > 0 },
   );
 
   return {
