@@ -40,6 +40,7 @@ module.exports = {
       "<rootDir>/config/jest/fileTransform.js",
     "\\.(css|less)$": "<rootDir>/config/jest/fileTransform.js",
     "^lodash-es$": "lodash",
+    "^@/testing": "<rootDir>/testing",
     "^@/(.*)$": "<rootDir>/src/$1",
   },
   transformIgnorePatterns: [`/node_modules/.pnpm/(?!${esModules})`],

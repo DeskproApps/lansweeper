@@ -65,8 +65,11 @@ export type UserContext = Context<UserData, Maybe<Settings>>;
 
 export type NavigateToChangePage = { type: "changePage", path: To };
 
+export type UnlinkPayload = { type: "unlink", device: DeviceType };
+
 export type EventPayload =
   | NavigateToChangePage
+  | UnlinkPayload
 ;
 
 export type DeviceType = Device & {
