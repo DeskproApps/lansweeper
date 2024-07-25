@@ -1,5 +1,5 @@
-import { getQueryParams } from "../../utils";
-import { BASE_URL } from "../../constants";
+import { getQueryParams } from "@/utils";
+import { BASE_URL } from "@/constants";
 import { baseRequest } from "./baseRequest";
 import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { AccessToken } from "./types";

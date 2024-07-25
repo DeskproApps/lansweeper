@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { P5 } from "@deskpro/deskpro-ui";
-import { DEFAULT_ERROR } from "../../../constants";
+import { DEFAULT_ERROR } from "@/constants";
 import type { FC, ReactNode } from "react";
 
 type Props = {

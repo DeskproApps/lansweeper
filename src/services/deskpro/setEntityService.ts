@@ -1,7 +1,7 @@
-import { ENTITY } from "../../constants";
+import { ENTITY } from "@/constants";
 import type { IDeskproClient } from "@deskpro/app-sdk";
-import type { Device } from "../lansweeper/types";
-import type { DPUser } from "../../types";
+import type { Device } from "@/services/lansweeper/types";
+import type { DPUser } from "@/types";
 
 const setEntityService = (
   client: IDeskproClient,

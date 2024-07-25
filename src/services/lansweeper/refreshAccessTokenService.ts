@@ -1,5 +1,5 @@
-import { setAccessTokenService } from "../deskpro";
-import { BASE_URL, placeholders } from "../../constants";
+import { setAccessTokenService } from "@/services/deskpro";
+import { BASE_URL, placeholders } from "@/constants";
 import { baseRequest } from "./baseRequest";
 import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { RefreshToken } from "./types";

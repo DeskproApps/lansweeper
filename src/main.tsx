@@ -4,9 +4,9 @@ import { HashRouter } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ErrorBoundary } from "react-error-boundary";
 import { DeskproAppProvider, LoadingSpinner } from "@deskpro/app-sdk";
-import { queryClient } from "./query";
-import { App } from "./App";
-import { ErrorFallback } from "./components";
+import { queryClient } from "@/query";
+import { App } from "@/App";
+import { ErrorFallback } from "@/components";
 import "@deskpro/deskpro-ui/dist/deskpro-ui.css";
 import "@deskpro/deskpro-ui/dist/deskpro-custom-icons.css";
 

@@ -1,9 +1,10 @@
 import { useInitialisedDeskproAppClient } from "@deskpro/app-sdk";
+import type { DeviceType } from "@/types";
 
-const useBadgeCount = (count: number) => {
+const useBadgeCount = (items: DeviceType[]) => {
   useInitialisedDeskproAppClient((client) => {
-    client.setBadgeCount(count);
-  }, [count]);
+    client.setBadgeCount(items?.length ?? 0);
+  }, [items]);
 };
 
 export { useBadgeCount };

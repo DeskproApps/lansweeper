@@ -1,9 +1,9 @@
 import { isEmpty } from "lodash-es";
 import { proxyFetch, adminGenericProxyFetch } from "@deskpro/app-sdk";
-import { GRAPHQL_URL, placeholders } from "../../constants";
-import { getQueryParams, getRequestBody, parseGlobalAccessToken } from "../../utils";
+import { GRAPHQL_URL, placeholders } from "@/constants";
+import { getQueryParams, getRequestBody, parseGlobalAccessToken } from "@/utils";
 import { LansweeperError } from "./LansweeperError";
-import type { Request, FetchOptions } from "../../types";
+import type { Request, FetchOptions } from "@/types";
 
 const baseRequest: Request = async (client, {
   url,

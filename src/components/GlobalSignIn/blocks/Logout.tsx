@@ -1,9 +1,9 @@
 import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { P1, Button } from "@deskpro/deskpro-ui";
-import { Secondary } from "../../common";
+import { Secondary } from "@/components/common";
 import type { FC } from "react";
 import type { AnyIcon } from "@deskpro/deskpro-ui";
-import type { CurrentUser } from "../../../services/lansweeper/types";
+import type { CurrentUser } from "@/services/lansweeper/types";
 
 export type Props = {
   user: CurrentUser;

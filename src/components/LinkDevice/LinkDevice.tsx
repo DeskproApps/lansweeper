@@ -1,9 +1,9 @@
 import { HorizontalDivider } from "@deskpro/app-sdk";
-import { Container } from "../common";
+import { Container } from "@/components/common";
 import { Buttons, Filters, Devices } from "./blocks";
 import type { FC } from "react";
-import type { Maybe, DeviceType } from "../../types";
-import type { Site } from "../../services/lansweeper/types";
+import type { Maybe, DeviceType } from "@/types";
+import type { Site } from "@/services/lansweeper/types";
 
 type Props = {
   sites: Site[];

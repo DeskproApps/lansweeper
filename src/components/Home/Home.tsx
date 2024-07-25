@@ -1,9 +1,10 @@
 import { Fragment } from "react";
+import { map, isEmpty } from "lodash";
 import { HorizontalDivider } from "@deskpro/app-sdk";
-import { Container, NotFound } from "../common";
-import { DeviceItem } from "../DeviceItem";
+import { Container, NotFound } from "@/components/common";
+import { DeviceItem } from "@/components/DeviceItem";
 import type { FC } from "react";
-import type { DeviceType } from "../../types";
+import type { DeviceType } from "@/types";
 
 export type Props = {
   devices: DeviceType[];
@@ -12,9 +13,9 @@ export type Props = {
 const Home: FC<Props> = ({ devices }) => {
   return (
     <Container>
-      {(devices?.length === 0) ? (
+      {isEmpty(devices) ? (
         <NotFound text="No devices found" />
-      ) : devices.map((device) => (
+      ) : map(devices, (device) => (
         <Fragment key={device.key}>
           <DeviceItem device={device}  />
           <HorizontalDivider style={{ marginBottom: 14 }}/>

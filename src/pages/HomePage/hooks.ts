@@ -3,11 +3,11 @@ import {
   useQueryWithClient,
   useDeskproLatestAppContext,
 } from "@deskpro/app-sdk";
-import { getEntityListService } from "../../services/deskpro";
-import { getDevicesService } from "../../services/lansweeper";
-import { enhanceDevices } from "../../utils";
-import { QueryKey } from "../../query";
-import type { DPUser, DeviceType, UserContext } from "../../types";
+import { getEntityListService } from "@/services/deskpro";
+import { getDevicesService } from "@/services/lansweeper";
+import { enhanceDevices } from "@/utils";
+import { QueryKey } from "@/query";
+import type { DPUser, DeviceType, UserContext } from "@/types";
 
 type UseLinkedDevices = () => {
   isLoading: boolean;
@@ -16,7 +16,7 @@ type UseLinkedDevices = () => {
 
 const useLinkedDevices: UseLinkedDevices = () => {
   const { context } = useDeskproLatestAppContext() as { context: UserContext };
-  const dpUserId = context.data?.user.id;
+  const dpUserId = context?.data?.user.id;
 
   const linkedIds = useQueryWithClient(
     [QueryKey.LINKED_DEVICES, dpUserId as DPUser["id"]],

@@ -1,5 +1,5 @@
 import { useGlobalSignIn } from "./hooks";
-import { GlobalSignIn } from "../../components";
+import { GlobalSignIn } from "@/components";
 import type { FC } from "react";
 
 const GlobalSignInPage: FC = () => {

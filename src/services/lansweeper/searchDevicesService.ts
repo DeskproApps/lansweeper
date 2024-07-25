@@ -1,6 +1,6 @@
 import { baseRequest } from "./baseRequest";
-import { gql } from "../../utils";
-import { fields } from "../../constants";
+import { gql } from "@/utils";
+import { fields } from "@/constants";
 import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { GQL, Site, SearchResponce } from "./types";
 

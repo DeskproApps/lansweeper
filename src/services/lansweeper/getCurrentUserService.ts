@@ -1,7 +1,7 @@
 import { baseRequest } from "./baseRequest";
-import { gql } from "../../utils";
+import { gql } from "@/utils";
 import type { IDeskproClient } from "@deskpro/app-sdk";
-import type { Settings } from "../../types";
+import type { Settings } from "@/types";
 import type { GQL, CurrentUser } from "./types";
 
 const getCurrentUserService = (

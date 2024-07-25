@@ -1,10 +1,10 @@
 import { useMemo, useCallback } from "react";
 import { Title, Property, TwoProperties } from "@deskpro/app-sdk";
-import { useExternalLinks } from "../../hooks";
-import { getOS, getHumanCapacity } from "../../utils";
-import { ButtonAsLink, LansweeperLogo } from "../common";
+import { useExternalLinks } from "@/hooks";
+import { getOS, getHumanCapacity } from "@/utils";
+import { ButtonAsLink, LansweeperLogo } from "@/components/common";
 import type { FC } from "react";
-import type { DeviceType } from "../../types";
+import type { DeviceType } from "@/types";
 
 export type Props = {
   device: DeviceType;
@@ -27,13 +27,13 @@ const DeviceItem: FC<Props> = ({ device, onClickTitle }) => {
     <>
       <Title
         title={!onClickTitle
-          ? device.assetBasicInfo.name
+          ? device?.assetBasicInfo?.name
           : (
             <ButtonAsLink
               type="button"
               onClick={onClick}
             >
-              {device.assetBasicInfo.name}
+              {device?.assetBasicInfo?.name}
             </ButtonAsLink>
           )
         }
@@ -43,13 +43,13 @@ const DeviceItem: FC<Props> = ({ device, onClickTitle }) => {
         leftLabel="Site"
         leftText={site?.brandingName || site?.name}
         rightLabel="Model"
-        rightText={device.assetCustom.model}
+        rightText={device?.assetCustom?.model}
       />
       <TwoProperties
         leftLabel="OS"
         leftText={os}
         rightLabel="Serial number"
-        rightText={device.assetCustom.serialNumber}
+        rightText={device?.assetCustom?.serialNumber}
       />
       <Property label="Storage capacity" text={capacity} />
     </>

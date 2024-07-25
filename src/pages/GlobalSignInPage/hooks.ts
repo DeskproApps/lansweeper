@@ -6,11 +6,11 @@ import {
     useDeskproAppEvents,
     useInitialisedDeskproAppClient
 } from "@deskpro/app-sdk";
-import { getAccessTokenService, getCurrentUserService } from "../../services/lansweeper";
-import { getQueryParams } from "../../utils";
-import { DEFAULT_ERROR } from "../../constants";
-import type { Maybe, Settings } from "../../types";
-import type { CurrentUser } from "../../services/lansweeper/types";
+import { getAccessTokenService, getCurrentUserService } from "@/services/lansweeper";
+import { getQueryParams } from "@/utils";
+import { DEFAULT_ERROR } from "@/constants";
+import type { Maybe, Settings } from "@/types";
+import type { CurrentUser } from "@/services/lansweeper/types";
 
 const useGlobalSignIn = () => {
     const { client } = useDeskproAppClient();

@@ -1,7 +1,7 @@
 import { CopyToClipboardInput, LoadingSpinner } from "@deskpro/app-sdk";
-import { Secondary } from "../common";
+import { Secondary } from "@/components/common";
 import type { FC } from "react";
-import type { Maybe } from "../../types";
+import type { Maybe } from "@/types";
 
 export type Props = {
   callbackUrl?: Maybe<string>;

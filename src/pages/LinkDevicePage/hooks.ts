@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { reduce, concat } from "lodash-es";
 import { useQueryWithClient } from "@deskpro/app-sdk";
-import { getSitesService, searchDevicesService } from "../../services/lansweeper";
-import { enhanceSearchDevices } from "../../utils";
-import { QueryKey } from "../../query";
-import type { Maybe, DeviceType } from "../../types";
-import type { Site, Profile } from "../../services/lansweeper/types";
+import { getSitesService, searchDevicesService } from "@/services/lansweeper";
+import { enhanceSearchDevices } from "@/utils";
+import { QueryKey } from "@/query";
+import type { Maybe, DeviceType } from "@/types";
+import type { Site, Profile } from "@/services/lansweeper/types";
 
 type UseSearchDevices = (siteId?: Maybe<Site["id"]>, q?: Maybe<string>) => {
   isLoading: boolean;

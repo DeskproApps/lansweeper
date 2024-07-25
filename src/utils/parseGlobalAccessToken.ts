@@ -1,19 +1,19 @@
-import type { Settings } from "../types";
+import type { Maybe, Settings } from "@/types";
 
-type ParseGlobalAccessToken = (tokens?: Settings["global_access_token"]) => {
+type Tokens = {
   access_token: string;
   refresh_token: string;
 };
 
-const parseGlobalAccessToken: ParseGlobalAccessToken = (tokens) => {
-  const parsedTokens = { access_token: "", refresh_token: "" };
+const parseGlobalAccessToken = (tokens?: Settings["global_access_token"]): Tokens => {
+  const parsedTokens: Tokens = { access_token: "", refresh_token: "" };
 
   if (!tokens) {
     return parsedTokens;
   }
 
   try {
-    const parsed = JSON.parse(tokens) as {access_token: string, refresh_token: string}|undefined;
+    const parsed = JSON.parse(tokens) as Maybe<Tokens>;
     parsedTokens.access_token = parsed?.access_token || "";
     parsedTokens.refresh_token = parsed?.refresh_token || "";
   } catch (e) {

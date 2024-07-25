@@ -7,14 +7,14 @@ import {
   useDeskproAppClient,
   useDeskproLatestAppContext,
 } from "@deskpro/app-sdk";
-import { setEntityService } from "../../services/deskpro";
-import { useSetTitle, useRegisterElements, useAsyncError } from "../../hooks";
+import { setEntityService } from "@/services/deskpro";
+import { useSetTitle, useRegisterElements, useAsyncError } from "@/hooks";
 import { useSearchDevices } from "./hooks";
-import { INPUT_DEBOUNCE } from "../../constants";
-import { LinkDevice } from "../../components";
+import { INPUT_DEBOUNCE } from "@/constants";
+import { LinkDevice } from "@/components";
 import type { FC } from "react";
-import type { Maybe, UserContext, DeviceType } from "../../types";
-import type { Site } from "../../services/lansweeper/types";
+import type { Maybe, UserContext, DeviceType } from "@/types";
+import type { Site } from "@/services/lansweeper/types";
 
 const LinkDevicePage: FC = () => {
   const navigate = useNavigate();

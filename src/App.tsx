@@ -14,8 +14,8 @@ import {
   LoadingAppPage,
   GlobalSignInPage,
   AdminCallbackPage,
-} from "./pages";
-import { AppContainer } from "./components/common";
+} from "@/pages";
+import { AppContainer } from "@/components/common";
 import type { FC } from "react";
 import type { EventPayload } from "./types";
 

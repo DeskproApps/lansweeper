@@ -1,10 +1,10 @@
 import { faSignIn } from "@fortawesome/free-solid-svg-icons";
 import { P1, Button, AnchorButton } from "@deskpro/deskpro-ui";
-import { nbsp } from "../../../constants";
-import { Invalid } from "../../common";
+import { nbsp } from "@/constants";
+import { Invalid } from "@/components/common";
 import type { FC } from "react";
 import type { AnyIcon } from "@deskpro/deskpro-ui";
-import type { Maybe } from "../../../types";
+import type { Maybe } from "@/types";
 
 export type Props = {
   url: string;
