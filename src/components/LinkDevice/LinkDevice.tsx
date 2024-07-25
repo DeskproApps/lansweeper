@@ -2,21 +2,21 @@ import { HorizontalDivider } from "@deskpro/app-sdk";
 import { Container } from "../common";
 import { Buttons, Filters, Devices } from "./blocks";
 import type { FC } from "react";
-import type { Maybe } from "../../types";
-import type { Site, Device } from "../../services/lansweeper/types";
+import type { Maybe, DeviceType } from "../../types";
+import type { Site } from "../../services/lansweeper/types";
 
 type Props = {
   sites: Site[];
-  devices: Device[];
+  devices: DeviceType[];
   isFetching: boolean;
   onCancel: () => void;
   isSubmitting: boolean;
   siteId: Maybe<Site["id"]>;
-  selectedDevices: Device[];
+  selectedDevices: DeviceType[];
   onLinkDevices: () => void;
   onChangeSite: (siteId: Site["id"]) => void;
   onChangeSearchQuery: (search: string) => void;
-  onChangeSelectedDevice: (device: Device) => void;
+  onChangeSelectedDevice: (device: DeviceType) => void;
 };
 
 const LinkDevice: FC<Props> = ({
@@ -52,8 +52,6 @@ const LinkDevice: FC<Props> = ({
       <HorizontalDivider/>
       <Container>
         <Devices
-          sites={sites}
-          siteId={siteId}
           isLoading={isFetching}
           devices={devices}
           selectedDevices={selectedDevices}

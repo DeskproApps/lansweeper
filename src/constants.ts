@@ -32,3 +32,23 @@ export const APP_URL = "https://app.lansweeper.com";
 export const BASE_URL = "https://api.lansweeper.com/api";
 
 export const GRAPHQL_URL = `${BASE_URL}/v2/graphql`;
+
+export const fields = {
+  DEVICE: [
+    `"key"`,
+    `"assetBasicInfo.name"`,
+    `"assetBasicInfo.ipAddress"`,
+    `"assetBasicInfo.mac"`,
+    `"assetBasicInfo.subType"`,
+    `"assetBasicInfo.type"`,
+    `"assetCustom.manufacturer"`,
+    `"assetCustom.model"`,
+    `"assetCustom.serialNumber"`,
+    `"diskPartitions.mountedOn"`,
+    `"diskPartitions.available"`,
+    `"diskPartitions.size"`,
+    `"operatingSystem.caption"`,
+    `"operatingSystem.name"`,
+    `"operatingSystem.version"`,
+  ],
+} as const;

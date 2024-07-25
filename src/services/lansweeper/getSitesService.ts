@@ -8,7 +8,7 @@ const getSitesService = (client: IDeskproClient) => {
     query Sites {
       me {
         profiles {
-            site { id name companyName }
+            site { id name brandingName }
         }
       }
     }

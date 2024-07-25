@@ -1,4 +1,4 @@
-import { omit } from "lodash";
+import { omit } from "lodash-es";
 import { getOS } from "../getOS";
 import { mockSearchDevices } from "../../../testing";
 

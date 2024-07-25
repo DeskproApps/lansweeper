@@ -1,4 +1,3 @@
-import { get } from "lodash";
 import type { Settings } from "../types";
 
 type ParseGlobalAccessToken = (tokens?: Settings["global_access_token"]) => {
@@ -14,9 +13,9 @@ const parseGlobalAccessToken: ParseGlobalAccessToken = (tokens) => {
   }
 
   try {
-    const parsed = JSON.parse(tokens);
-    parsedTokens.access_token = get(parsed, "access_token", "");
-    parsedTokens.refresh_token = get(parsed, "refresh_token", "");
+    const parsed = JSON.parse(tokens) as {access_token: string, refresh_token: string}|undefined;
+    parsedTokens.access_token = parsed?.access_token || "";
+    parsedTokens.refresh_token = parsed?.refresh_token || "";
   } catch (e) {
     // the error is handled in the calling code
   }

@@ -1,16 +1,13 @@
 import { cleanup } from "@testing-library/react";
 import { render } from "@deskpro/app-testing-utils";
 import { Devices } from "../Devices";
-import { mockSearchDevices, mockSites } from "../../../../../testing";
+import { mockSearchDevices } from "../../../../../testing";
 import type { Props } from "../Devices";
 
 const mockDevices = mockSearchDevices.data.site.assetResources.items;
-const mockSite = mockSites.data.me.profiles[0].site;
 
 const renderDevices = (props?: Partial<Props>) => render((
   <Devices
-    sites={props?.sites || [mockSite] as never}
-    siteId={props?.siteId || mockSite.id}
     isLoading={props?.isLoading || false}
     devices={props?.devices || mockDevices as never}
     selectedDevices={props?.selectedDevices || []}

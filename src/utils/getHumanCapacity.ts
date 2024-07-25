@@ -1,4 +1,4 @@
-import { find } from "lodash";
+import { find } from "lodash-es";
 import prettyBytes from "pretty-bytes";
 import type { Maybe } from "../types";
 import type { DiskPartition } from "../services/lansweeper/types";

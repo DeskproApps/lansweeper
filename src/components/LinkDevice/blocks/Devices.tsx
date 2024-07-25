@@ -1,25 +1,20 @@
 import { Fragment } from "react";
-import { map, isEmpty } from "lodash";
+import { map, isEmpty } from "lodash-es";
 import { Checkbox } from "@deskpro/deskpro-ui";
 import { LoadingSpinner, HorizontalDivider } from "@deskpro/app-sdk";
 import { Card, NotFound } from "../../common";
 import { DeviceItem } from "../../DeviceItem";
 import type { FC } from "react";
-import type { Maybe } from "../../../types";
-import type { Site, Device } from "../../../services/lansweeper/types";
+import type { DeviceType } from "../../../types";
 
 export type Props = {
-  sites: Site[];
   isLoading: boolean;
-  devices: Device[];
-  siteId: Maybe<Site["id"]>;
-  selectedDevices: Device[];
-  onChangeSelectedDevice: (device: Device) => void;
+  devices: DeviceType[];
+  selectedDevices: DeviceType[];
+  onChangeSelectedDevice: (device: DeviceType) => void;
 };
 
 const Devices: FC<Props> = ({
-  sites,
-  siteId,
   devices,
   isLoading,
   selectedDevices,
@@ -54,8 +49,6 @@ const Devices: FC<Props> = ({
             </Card.Media>
             <Card.Body>
               <DeviceItem
-                siteId={siteId}
-                sites={sites}
                 device={device}
                 onClickTitle={() => onChangeSelectedDevice(device)}
               />

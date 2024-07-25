@@ -1,7 +1,7 @@
 import type { To, ParamKeyValuePair } from "react-router-dom";
 import type { DropdownValueType } from "@deskpro/deskpro-ui";
 import type { Context, IDeskproClient, V2ProxyRequestInitBody } from "@deskpro/app-sdk";
-import type { Response } from "./services/lansweeper/types";
+import type { Response, Device, Site } from "./services/lansweeper/types";
 
 /** Common types */
 export type Maybe<T> = T | undefined | null;
@@ -68,3 +68,7 @@ export type NavigateToChangePage = { type: "changePage", path: To };
 export type EventPayload =
   | NavigateToChangePage
 ;
+
+export type DeviceType = Device & {
+  site?: Site;
+};

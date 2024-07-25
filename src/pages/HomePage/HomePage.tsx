@@ -1,9 +1,15 @@
-import { useSetTitle, useRegisterElements } from "../../hooks";
+import { LoadingSpinner } from "@deskpro/app-sdk";
+import { useSetTitle, useBadgeCount, useRegisterElements } from "../../hooks";
+import { useLinkedDevices } from "./hooks";
 import { Home } from "../../components";
 import type { FC } from "react";
 
 const HomePage: FC = () => {
+  const { devices, isLoading } = useLinkedDevices();
+
   useSetTitle();
+
+  useBadgeCount(devices.length);
 
   useRegisterElements(({ registerElement }) => {
     registerElement("plus", {
@@ -12,8 +18,14 @@ const HomePage: FC = () => {
     });
   });
 
+  if (isLoading) {
+    return (
+      <LoadingSpinner/>
+    );
+  }
+
   return (
-    <Home/>
+    <Home devices={devices}/>
   );
 };
 

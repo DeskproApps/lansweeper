@@ -1,14 +1,15 @@
 import { useMemo } from "react";
-import { get, reduce, concat } from "lodash";
+import { reduce, concat } from "lodash-es";
 import { useQueryWithClient } from "@deskpro/app-sdk";
 import { getSitesService, searchDevicesService } from "../../services/lansweeper";
+import { enhanceSearchDevices } from "../../utils";
 import { QueryKey } from "../../query";
-import type { Maybe } from "../../types";
-import type { Site, Profile, Device } from "../../services/lansweeper/types";
+import type { Maybe, DeviceType } from "../../types";
+import type { Site, Profile } from "../../services/lansweeper/types";
 
 type UseSearchDevices = (siteId?: Maybe<Site["id"]>, q?: Maybe<string>) => {
   isLoading: boolean;
-  devices: Device[];
+  devices: DeviceType[];
   sites: Site[];
   isFetching: boolean;
 };
@@ -20,21 +21,27 @@ const getSites = (profiles?: Profile[]) => {
 };
 
 const useSearchDevices: UseSearchDevices = (siteId, q) => {
-  const sites = useQueryWithClient([QueryKey.SITES], getSitesService);
+  const sitesResponce = useQueryWithClient([QueryKey.SITES], getSitesService);
 
-  const devices = useQueryWithClient(
+  const sites = useMemo(() => {
+    return getSites(sitesResponce.data?.data?.me?.profiles);
+  }, [sitesResponce.data]);
+
+  const devicesResponce = useQueryWithClient(
     [QueryKey.DEVICES, siteId as Site["id"], q as string],
     (client) => searchDevicesService(client, { siteId: siteId as Site["id"], q: q as string }),
     { enabled: Boolean(q) && Boolean(siteId) },
   );
 
+  const devices: DeviceType[] = useMemo(() => {
+    return enhanceSearchDevices(devicesResponce.data?.data, sites.find(({ id }) => id === siteId) as Site);
+  }, [siteId, devicesResponce.data, sites]);
+
   return {
-    isLoading: [sites].some(({ isLoading }) => isLoading),
-    isFetching: Boolean(q) && Boolean(siteId) && devices.isLoading,
-    sites: useMemo(() => getSites(get(sites.data, ["data", "me", "profiles"])), [sites.data]),
-    devices: useMemo(() => {
-      return get(devices.data, ["data", "site", "assetResources", "items"], []);
-    }, [devices.data]),
+    isLoading: [sitesResponce].some(({ isLoading }) => isLoading),
+    isFetching: Boolean(q) && Boolean(siteId) && devicesResponce.isLoading,
+    sites,
+    devices,
   };
 };
 

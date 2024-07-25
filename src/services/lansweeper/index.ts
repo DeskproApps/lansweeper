@@ -5,3 +5,4 @@ export { checkAuthService } from "./checkAuthService";
 export { refreshAccessTokenService } from "./refreshAccessTokenService";
 export { getSitesService } from "./getSitesService";
 export { searchDevicesService } from "./searchDevicesService";
+export { getDevicesService } from "./getDevicesService";

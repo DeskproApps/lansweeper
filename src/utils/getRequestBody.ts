@@ -1,4 +1,4 @@
-import { isEmpty, isString, isPlainObject } from "lodash";
+import { isEmpty, isString, isPlainObject } from "lodash-es";
 import { isForm } from "./isForm";
 import type { RequestParams } from "../types";
 
