@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { get, size } from "lodash";
 import {
   useQueryWithClient,
   useDeskproLatestAppContext,
@@ -17,7 +16,7 @@ type UseLinkedDevices = () => {
 
 const useLinkedDevices: UseLinkedDevices = () => {
   const { context } = useDeskproLatestAppContext() as { context: UserContext };
-  const dpUserId = get(context, ["data", "user", "id"]);
+  const dpUserId = context?.data?.user.id;
 
   const linkedIds = useQueryWithClient(
     [QueryKey.LINKED_DEVICES, dpUserId as DPUser["id"]],
@@ -28,12 +27,12 @@ const useLinkedDevices: UseLinkedDevices = () => {
   const devices = useQueryWithClient(
     [QueryKey.DEVICES, ...(Array.isArray(linkedIds.data) ? linkedIds.data : []) as string[]],
     (client) => getDevicesService(client, linkedIds.data as string[]),
-    { enabled: size(linkedIds.data) > 0 },
+    { enabled: (Array.isArray(linkedIds.data) ? linkedIds.data : []).length > 0 },
   );
 
   return {
     isLoading: [linkedIds, devices].some(({ isLoading }) => isLoading),
-    devices: useMemo(() => enhanceDevices(get(devices.data, ["data"])), [devices.data]),
+    devices: useMemo(() => enhanceDevices(devices.data?.data), [devices.data]),
   };
 };
 

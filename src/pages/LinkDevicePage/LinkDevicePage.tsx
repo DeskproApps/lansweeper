@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect, useCallback } from "react";
-import { get, size, cloneDeep } from "lodash";
+import { cloneDeep } from "lodash-es";
 import { useNavigate } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 import {
@@ -19,14 +19,14 @@ import type { Site } from "@/services/lansweeper/types";
 const LinkDevicePage: FC = () => {
   const navigate = useNavigate();
   const { client } = useDeskproAppClient();
-  const { context } = useDeskproLatestAppContext() as { context: UserContext };
+  const { context } = useDeskproLatestAppContext() as { context: UserContext|undefined };
   const { asyncErrorHandler } = useAsyncError();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [siteId, setSiteId] = useState<Maybe<Site["id"]>>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedDevices, setSelectedDevices] = useState<DeviceType[]>([]);
   const { isLoading, isFetching, sites, devices } = useSearchDevices(siteId, searchQuery);
-  const dpUserId = useMemo(() => get(context, ["data", "user", "id"]), [context]);
+  const dpUserId = useMemo(() => context?.data?.user.id, [context]);
 
   const onChangeSearchQuery = useDebouncedCallback(setSearchQuery, INPUT_DEBOUNCE);
 
@@ -47,7 +47,7 @@ const LinkDevicePage: FC = () => {
   }, [selectedDevices]);
 
   const onLinkDevices = useCallback(() => {
-    if (!client || !dpUserId || !size(selectedDevices)) {
+    if (!client || !dpUserId || selectedDevices.length <= 0) {
       return;
     }
 
@@ -66,7 +66,7 @@ const LinkDevicePage: FC = () => {
   // if it's init render, choose the first site
   useEffect(() => {
     if (!siteId) {
-      setSiteId(get(sites, [0, "id"]));
+      setSiteId(sites[0]?.id);
     }
   }, [sites, siteId]);
 

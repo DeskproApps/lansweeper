@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { reduce } from "lodash";
+import { reduce } from "lodash-es";
 import { removeUnnecessarySpaces } from "./removeUnnecessarySpaces";
 import type { Dict } from "@/types";
 

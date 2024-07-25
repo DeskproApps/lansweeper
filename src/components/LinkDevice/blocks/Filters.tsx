@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { Search, Select } from "@deskpro/app-sdk";
-import { Label } from "@/components/common";
 import { getOptions } from "@/utils";
+import { Label } from "@/components/common";
 import type { FC } from "react";
-import type { Maybe } from "@/types";
+import type { Maybe,Option } from "@/types";
 import type { Site } from "@/services/lansweeper/types";
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
 };
 
 const Filters: FC<Props> = ({ sites, siteId, isFetching, onChangeSearchQuery, onChangeSite }) => {
-  const options = useMemo(() => getOptions(sites, "brandingName"), [sites]);
+  const options = useMemo(() => getOptions(sites, "brandingName"), [sites]) as Array<Option>;
 
   return (
     <>
