@@ -4,6 +4,6 @@
 
 Link your devices registered in Lansweeper to your Deskpro users, powering better IT support and communication
 
-![Lansweeper App - Deskpro](./docs/assets/screenshot.png)
+![Lansweeper App - Deskpro](./docs/screenshot.png)
 
 [Find out more about our Lansweeper App](https://www.deskpro.com/apps/lansweeper)
