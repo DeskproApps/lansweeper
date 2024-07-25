@@ -13,44 +13,43 @@ export type Props = {
 
 const DeviceItem: FC<Props> = ({ device, onClickTitle }) => {
   const { getDeviceLink } = useExternalLinks();
-  const site = device?.site;
+  const site = device.site;
   const link = useMemo(() => {
-    return getDeviceLink(site?.name, device?.key);
-  }, [site?.name, device?.key, getDeviceLink]);
+    return getDeviceLink(site?.name, device.key);
+  }, [site?.name, device.key, getDeviceLink]);
   const onClick = useCallback(() => {
     onClickTitle && onClickTitle();
   }, [onClickTitle]);
-  const os = getOS(device?.operatingSystem);
-  const capacity = getHumanCapacity(device?.diskPartitions);
+  const os = getOS(device.operatingSystem);
+  const capacity = getHumanCapacity(device.diskPartitions);
 
   return (
     <>
       <Title
         title={!onClickTitle
-          ? device?.assetBasicInfo?.name
+          ? device.assetBasicInfo.name
           : (
             <ButtonAsLink
               type="button"
               onClick={onClick}
             >
-              {device?.assetBasicInfo?.name}
+              {device.assetBasicInfo.name}
             </ButtonAsLink>
           )
         }
-        {...(!link ? {} : { icon: <LansweeperLogo/> })}
-        {...(!link ? {} : { link })}
+        {...(link ? { icon: <LansweeperLogo />, link } : {})}
       />
       <TwoProperties
         leftLabel="Site"
         leftText={site?.brandingName || site?.name}
         rightLabel="Model"
-        rightText={device?.assetCustom?.model}
+        rightText={device.assetCustom.model}
       />
       <TwoProperties
         leftLabel="OS"
         leftText={os}
         rightLabel="Serial number"
-        rightText={device?.assetCustom?.serialNumber}
+        rightText={device.assetCustom.serialNumber}
       />
       <Property label="Storage capacity" text={capacity} />
     </>

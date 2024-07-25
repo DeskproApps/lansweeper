@@ -19,7 +19,7 @@ import type { Site } from "../../services/lansweeper/types";
 const LinkDevicePage: FC = () => {
   const navigate = useNavigate();
   const { client } = useDeskproAppClient();
-  const { context } = useDeskproLatestAppContext() as { context: UserContext };
+  const { context } = useDeskproLatestAppContext() as { context: UserContext|undefined };
   const { asyncErrorHandler } = useAsyncError();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [siteId, setSiteId] = useState<Maybe<Site["id"]>>(null);

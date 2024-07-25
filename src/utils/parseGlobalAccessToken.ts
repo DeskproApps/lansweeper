@@ -13,7 +13,7 @@ const parseGlobalAccessToken: ParseGlobalAccessToken = (tokens) => {
   }
 
   try {
-    const parsed = JSON.parse(tokens);
+    const parsed = JSON.parse(tokens) as {access_token: string, refresh_token: string}|undefined;
     parsedTokens.access_token = parsed?.access_token || "";
     parsedTokens.refresh_token = parsed?.refresh_token || "";
   } catch (e) {

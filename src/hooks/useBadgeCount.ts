@@ -1,10 +1,10 @@
 import { useInitialisedDeskproAppClient } from "@deskpro/app-sdk";
 import type { Maybe, DeviceType } from "../types";
 
-const useBadgeCount = (items: Maybe<DeviceType[]>) => {
+const useBadgeCount = (count: number) => {
   useInitialisedDeskproAppClient((client) => {
-    client.setBadgeCount(items?.length ?? 0);
-  }, [items]);
+    client.setBadgeCount(count);
+  }, [count]);
 };
 
 export { useBadgeCount };

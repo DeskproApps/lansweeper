@@ -16,7 +16,7 @@ type UseLinkedDevices = () => {
 
 const useLinkedDevices: UseLinkedDevices = () => {
   const { context } = useDeskproLatestAppContext() as { context: UserContext };
-  const dpUserId = context?.data?.user.id;
+  const dpUserId = context.data?.user.id;
 
   const linkedIds = useQueryWithClient(
     [QueryKey.LINKED_DEVICES, dpUserId as DPUser["id"]],

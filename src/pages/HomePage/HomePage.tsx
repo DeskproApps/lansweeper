@@ -9,7 +9,7 @@ const HomePage: FC = () => {
 
   useSetTitle();
 
-  useBadgeCount(devices);
+  useBadgeCount(devices.length);
 
   useRegisterElements(({ registerElement }) => {
     registerElement("plus", {
