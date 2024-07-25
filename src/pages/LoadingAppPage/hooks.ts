@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { get, size } from "lodash";
 import { useNavigate } from "react-router-dom";
 import {
   useDeskproLatestAppContext,
@@ -16,7 +15,7 @@ const useLoadingApp: UseLoadingApp = () => {
   const navigate = useNavigate();
   const { context } = useDeskproLatestAppContext() as { context: UserContext };
   const { asyncErrorHandler } = useAsyncError();
-  const dpUserId = useMemo(() => get(context, ["data", "user", "id"]), [context]);
+  const dpUserId = useMemo(() => context?.data?.user.id, [context]);
 
   useInitialisedDeskproAppClient((client) => {
     if (!dpUserId) {
@@ -27,7 +26,7 @@ const useLoadingApp: UseLoadingApp = () => {
       .catch(() => refreshAccessTokenService(client))
       .then(() => checkAuthService(client))
       .then(() => getEntityListService(client, dpUserId))
-      .then((entityIds) => navigate(size(entityIds) ? "/home" : "/devices/link"))
+      .then((entityIds) => navigate((entityIds?.length > 0) ? "/home" : "/devices/link"))
       .catch(asyncErrorHandler)
   }, [dpUserId, asyncErrorHandler]);
 };

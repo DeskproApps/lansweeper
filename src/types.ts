@@ -70,5 +70,5 @@ export type EventPayload =
 ;
 
 export type DeviceType = Device & {
-  site: Site;
+  site?: Site;
 };

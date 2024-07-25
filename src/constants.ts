@@ -51,4 +51,4 @@ export const fields = {
     `"operatingSystem.name"`,
     `"operatingSystem.version"`,
   ],
-};
+} as const;

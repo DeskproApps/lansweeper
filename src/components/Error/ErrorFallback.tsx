@@ -1,4 +1,4 @@
-import { get } from "lodash";
+import { get } from "lodash-es";
 import { DEFAULT_ERROR } from "@/constants";
 import { LansweeperError } from "@/services/lansweeper";
 import { Container, ErrorBlock } from "@/components/common";
