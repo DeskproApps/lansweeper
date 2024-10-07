@@ -18,6 +18,8 @@ export const DEFAULT_ERROR = "There was an error!";
 
 export const ACCESS_TOKEN_PATH = "oauth2/access_token";
 
+export const INTEGRATION_ID = "2c9a9343-46f8-49de-a8d4-f9c76863f5bf";
+
 export const placeholders = {
   CLIENT_ID: "__client_id__",
   CLIENT_SECRET: "__client_secret__",
