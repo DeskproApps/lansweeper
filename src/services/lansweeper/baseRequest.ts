@@ -4,7 +4,7 @@ import { GRAPHQL_URL, placeholders, INTEGRATION_ID } from "@/constants";
 import { getQueryParams, getRequestBody, parseGlobalAccessToken } from "@/utils";
 import { LansweeperError } from "./LansweeperError";
 import manifest from "@/../manifest.json";
-import type { Request, FetchOptions } from "@/types";
+import type { Request } from "@/types";
 
 const baseRequest: Request = async (client, {
   url,
@@ -23,7 +23,7 @@ const baseRequest: Request = async (client, {
   const appVersion = manifest.version;
 
   const requestUrl = `${baseUrl}${isEmpty(params) ? "": `?${params}`}`;
-  const options: FetchOptions = {
+  const options: RequestInit = {
     method,
     body,
     headers: {
