@@ -4,7 +4,7 @@ import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { GQL, SiteResponse } from "./types";
 
 const getSitesService = (client: IDeskproClient) => {
-  const query = gql`
+  const query = gql({})`
     query Sites {
       me {
         profiles {

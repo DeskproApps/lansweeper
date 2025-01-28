@@ -8,7 +8,7 @@ const getCurrentUserService = (
   client: IDeskproClient,
   settings?: Settings,
 ) => {
-  const query = gql`
+  const query = gql({})`
     query Me {
       me {
           id
