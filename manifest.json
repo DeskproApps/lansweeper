@@ -17,35 +17,63 @@
     }
   },
   "settings": {
+    "use_advanced_connect": {
+      "title": "Advanced Connect",
+      "description": "Follow the setup guide and use your credentials to connect the app to Deskpro",
+      "type": "boolean",
+      "isRequired": false,
+      "isBackendOnly": false,
+      "default": false,
+      "order": 1
+    },
+    "use_global_access_token": {
+      "title": "Global Access Token",
+      "type": "boolean",
+      "isRequired": false,
+      "isBackendOnly": false,
+      "default": false,
+      "condition": "settings.use_advanced_connect != false",
+      "order": 2
+    },
     "client_id": {
       "title": "Client ID",
       "type": "string",
-      "isRequired": true,
+      "isRequired": false,
       "isBackendOnly": false,
+      "condition": "settings.use_advanced_connect != false",
       "order": 10
     },
     "client_secret": {
       "title": "Client Secret",
       "type": "string",
-      "isRequired": true,
+      "isRequired": false,
       "isBackendOnly": true,
+      "condition": "settings.use_advanced_connect != false",
       "order": 20
     },
     "callback_url": {
       "title": "Callback URL",
       "type": "app_embedded",
-      "options": { "entrypoint": "#/admin/callback" },
+      "options": {
+        "entrypoint": "#/admin/callback",
+        "height": "50px"
+      },
       "isRequired": false,
       "isBackendOnly": true,
+      "condition": "settings.use_advanced_connect != false",
       "order": 30
     },
     "global_access_token": {
       "title": "",
       "default": "",
       "type": "app_embedded",
-      "options": { "entrypoint": "#/admin/global-sign-in" },
-      "isRequired": true,
+      "options": {
+        "entrypoint": "#/admin/global-sign-in",
+        "height": "70px"
+      },
+      "isRequired": false,
       "isBackendOnly": true,
+      "condition": "settings.use_advanced_connect != false && settings.use_global_access_token != false",
       "order": 40
     }
   },
