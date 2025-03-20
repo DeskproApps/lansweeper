@@ -32,6 +32,8 @@ export type Request = <T>(
 
 /** Deskpro types */
 export type Settings = {
+  use_advanced_connect?: boolean;
+  use_global_access_token?: boolean;
   client_id?: string;
   client_secret?: string;
   global_access_token?: string; // JSON which looks like this format: {"access_token":"...","refresh_token":"..."}
