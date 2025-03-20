@@ -1,19 +1,29 @@
-import { useState, useMemo } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { FC, useState } from 'react';
 import { useInitialisedDeskproAppClient } from "@deskpro/app-sdk";
 import { AdminCallback } from "@/components";
-import type { FC } from "react";
+import { getQueryParams } from '@/utils';
 import type { Maybe } from "@/types";
 
 const AdminCallbackPage: FC = () => {
   const [callbackUrl, setCallbackUrl] = useState<Maybe<string>>(null);
-  const key = useMemo(() => uuidv4(), []);
 
-  useInitialisedDeskproAppClient((client) => {
-    client.oauth2()
-      .getAdminGenericCallbackUrl(key, /code=(?<token>[0-9a-f]+)/, /state=(?<key>.+)/)
-      .then(({ callbackUrl }) => setCallbackUrl(callbackUrl));
-  }, [key]);
+  useInitialisedDeskproAppClient(client => {
+    client.startOauth2Local(
+      ({ callbackUrl, state }) => {
+        setCallbackUrl(callbackUrl);
+
+        return `https://app.lansweeper.com/authorize-app/clientID?${getQueryParams({
+          state: state
+        })}`;
+      },
+      /^$/,
+      async () => ({data: {access_token: ''}}),
+      {
+        pollInterval: 10000,
+        timeout: 600
+      }
+    );
+  }, []);
 
   return (
     <AdminCallback callbackUrl={callbackUrl} />

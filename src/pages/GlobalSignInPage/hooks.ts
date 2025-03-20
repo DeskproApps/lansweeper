@@ -1,7 +1,7 @@
-import { useMemo, useState, useCallback } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { useState, useCallback, useRef } from 'react';
 import { get, isString } from "lodash-es";
 import {
+  IOAuth2,
     useDeskproAppClient,
     useDeskproAppEvents,
     useInitialisedDeskproAppClient
@@ -15,13 +15,15 @@ import type { CurrentUser } from "@/services/lansweeper/types";
 const useGlobalSignIn = () => {
     const { client } = useDeskproAppClient();
     const [ settings, setSettings ] = useState<Settings>({});
+    const callbackURLRef = useRef('');
+    const [oAuth2Context, setOAuth2Context] = useState<IOAuth2 | null>(null);
+    const o = useRef<IOAuth2>();
+    const [authorisationURL, setAuthorisationURL] = useState('');
     const [ callbackUrl, setCallbackUrl ] = useState<Maybe<string>>(null);
-    const [ poll, setPoll ] = useState<Maybe<(() => Promise<{ token: string }>)>>(null);
+    const [isPolling, setIsPolling] = useState(false);
     const [ isLoading, setIsLoading ] = useState<boolean>(false);
     const [ user, setUser ] = useState<Maybe<CurrentUser>>(null);
     const [error, setError] = useState<Maybe<string>>(null);
-    const { client_id: clientId, client_secret: clientSecret } = settings;
-    const key = useMemo(() => uuidv4(), []);
 
     const signOut = () => {
       client?.setAdminSetting("");
@@ -29,72 +31,104 @@ const useGlobalSignIn = () => {
       setSettings({});
     };
 
-    const signIn = useCallback(() => {
-      if (!poll || !client || !callbackUrl || !clientId || !clientSecret) {
-        return;
-      }
-
-      setIsLoading(true);
-      setError(null);
-
-      poll()
-        .then(({ token }) => {
-          return getAccessTokenService(client, { code: token, clientId, clientSecret, callbackUrl });
-        })
-        .then(({ access_token, refresh_token }) => {
-          const globalAccessToken = JSON.stringify({ access_token, refresh_token });
-          const updatedSettings: Settings = {
-            ...settings,
-            global_access_token: globalAccessToken,
-          };
-
-          client.setAdminSetting(globalAccessToken);
-          return getCurrentUserService(client, updatedSettings);
-        })
-        .then(({ data }) => setUser(data))
-        .catch((err) => {
-          setError(isString(err)
-            ? err
-            : get(err, ["data", "errors", 0, "message"]) || DEFAULT_ERROR
-          );
-        })
-        .finally(() => setIsLoading(false));
-    }, [client, poll, callbackUrl, clientId, clientSecret, settings]);
-
     const cancelLoading = () => setIsLoading(false);
-
-    // Build auth flow entrypoint URL
-    const oAuthUrl = useMemo(() => {
-      if (!clientId) {
-          return null;
-      }
-
-      return `https://app.lansweeper.com/authorize-app/${clientId}?${getQueryParams({
-        state: key,
-      })}`;
-    }, [clientId, key]);
 
     useDeskproAppEvents({
       onAdminSettingsChange: setSettings,
     }, []);
 
-    // Initialise OAuth flow
-    useInitialisedDeskproAppClient((client) => {
-      client.oauth2()
-        .getAdminGenericCallbackUrl(key, /code=(?<token>[^&]+)/, /state=(?<key>[^&]+)/)
-        .then(({ callbackUrl, poll }) => {
-          setCallbackUrl(callbackUrl);
-          setPoll(() => poll);
+    useInitialisedDeskproAppClient(async client => {
+      if (!settings) {
+        return;
+      };
+
+      if (settings.use_global_access_token === false) {
+        return;
+      };
+
+      const clientId = settings.client_id ?? '';
+      const clientSecret = settings.client_secret ?? '';
+
+      const oauth2Response = await client.startOauth2Local(
+        ({ callbackUrl, state }) => {
+          callbackURLRef.current = callbackUrl;
+
+          return `https://app.lansweeper.com/authorize-app/${clientId}?${getQueryParams({
+            state: state
+          })}`;
+        },
+        /code=(?<code>[^&]+)/,
+        async code => {
+          const data = await getAccessTokenService(client, {
+            code,
+            clientId,
+            clientSecret,
+            callbackUrl: callbackURLRef.current,
+          });
+
+          return { data };
+        }
+      );
+
+      o.current = oauth2Response;
+      setOAuth2Context(oauth2Response);
+      setAuthorisationURL(oauth2Response.authorizationUrl);
+      setCallbackUrl(callbackURLRef.current);
+  }, [settings]);
+
+  useInitialisedDeskproAppClient(client => {
+    if (!o.current || !client) {
+      return;
+    };
+
+    const startPolling = async () => {
+      try {
+        if (!o.current) {
+          throw new Error("OAuth2 context is not initialized");
+        }
+        const pollResult = await o.current.poll();
+        const globalAccessToken = JSON.stringify({
+          access_token: pollResult.data.access_token,
+          refresh_token: pollResult.data.refresh_token ?? ''
         });
-    }, [key]);
+        const updatedSettings: Settings = {
+          ...settings,
+          global_access_token: globalAccessToken
+        };
+
+        client.setAdminSetting(globalAccessToken);
+
+        const { data } = await getCurrentUserService(client, updatedSettings);
+
+        setUser(data);
+      } catch (error) {
+        setError(isString(error)
+          ? error
+          : get(error, ['data', 'errors', 0, 'message']) || DEFAULT_ERROR
+        );
+      } finally {
+        setIsPolling(false);
+        setIsLoading(false);
+      };
+    };
+
+    if (isPolling) {
+      startPolling();
+    };
+  }, [oAuth2Context, client, settings, isPolling]);
+
+  const onLogIn = useCallback(() => {
+    setIsLoading(true);
+    setIsPolling(true);
+  }, [setIsLoading, setIsPolling]);
 
     return {
         callbackUrl,
         user,
-        oAuthUrl,
+        oAuthUrl: authorisationURL,
         isLoading,
         cancelLoading,
-        signIn,
+        signIn: onLogIn,
         signOut,
         error,
     };
