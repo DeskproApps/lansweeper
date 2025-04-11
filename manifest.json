@@ -41,6 +41,7 @@
       "isRequired": false,
       "isBackendOnly": false,
       "condition": "settings.use_advanced_connect != false",
+      "default": "ea31649880fe0315ab5e1cb2d2549eeb",
       "order": 10
     },
     "client_secret": {
@@ -49,6 +50,7 @@
       "isRequired": false,
       "isBackendOnly": true,
       "condition": "settings.use_advanced_connect != false",
+      "default": "uCP1h3W4fL_ckPOPLUOySXFi1xUmq3xrdxU5XgfFhOWKfrEb8aHHhSqZt74TwbE0",
       "order": 20
     },
     "callback_url": {
