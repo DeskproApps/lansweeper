@@ -2,7 +2,7 @@
   "name": "@deskpro-apps/lansweeper",
   "title": "Lansweeper",
   "description": "Link your devices registered in Lansweeper to your Deskpro users, powering better IT support and communication",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "scope": "agent",
   "isSingleInstall": false,
   "hasDevMode": true,
