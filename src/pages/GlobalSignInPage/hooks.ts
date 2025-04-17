@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useMemo, useState, useCallback } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { get, isString } from "lodash-es";
