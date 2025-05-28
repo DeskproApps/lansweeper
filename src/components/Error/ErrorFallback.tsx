@@ -2,14 +2,9 @@ import { get } from "lodash-es";
 import { DEFAULT_ERROR } from "@/constants";
 import { LansweeperError } from "@/services/lansweeper";
 import { Container, ErrorBlock } from "@/components/common";
-import type { FC } from "react";
-import type { FallbackProps } from "react-error-boundary";
+import { FallbackRender } from "@sentry/react";
 
-type Props = Omit<FallbackProps, "error"> & {
-  error: Error,
-};
-
-const ErrorFallback: FC<Props> = ({ error }) => {
+const ErrorFallback: FallbackRender = ({ error }) => {
   let message = DEFAULT_ERROR;
   let consoleMessage;
 
