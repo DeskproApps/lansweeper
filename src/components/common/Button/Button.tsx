@@ -9,6 +9,7 @@ import type {
   ButtonProps,
   AnchorButtonProps,
 } from "@deskpro/deskpro-ui";
+import { DeskproAppTheme } from "@deskpro/app-sdk";
 
 export const Button: FC<ButtonProps> = styled(ButtonUI)`
   min-width: 72px;
@@ -20,7 +21,7 @@ export const AnchorButton: FC<AnchorButtonProps> = styled(AnchorButtonUI)`
   justify-content: center;
 `;
 
-export const ButtonAsLink = styled.button<{ color?: keyof ThemeColors }>`
+export const ButtonAsLink = styled.button<{ color?: keyof ThemeColors } & DeskproAppTheme>`
   display: inline;
   background: none;
   border: none;
