@@ -22,19 +22,24 @@
       "type": "string",
       "isRequired": true,
       "isBackendOnly": false,
-      "order": 10
+      "order": 10,
+      "default": "ea31649880fe0315ab5e1cb2d2549eeb"
     },
     "client_secret": {
       "title": "Client Secret",
       "type": "string",
       "isRequired": true,
       "isBackendOnly": true,
-      "order": 20
+      "order": 20,
+      "default": "uCP1h3W4fL_ckPOPLUOySXFi1xUmq3xrdxU5XgfFhOWKfrEb8aHHhSqZt74TwbE0"
     },
     "callback_url": {
       "title": "Callback URL",
       "type": "app_embedded",
-      "options": { "entrypoint": "#/admin/callback" },
+      "options": {
+        "entrypoint": "https://8f77d6780990.ngrok.app/#/admin/callback",
+        "height": 75
+      },
       "isRequired": false,
       "isBackendOnly": true,
       "order": 30
@@ -43,7 +48,10 @@
       "title": "",
       "default": "",
       "type": "app_embedded",
-      "options": { "entrypoint": "#/admin/global-sign-in" },
+      "options": {
+        "entrypoint": "https://8f77d6780990.ngrok.app/#/admin/global-sign-in",
+        "height": 100
+      },
       "isRequired": true,
       "isBackendOnly": true,
       "order": 40
