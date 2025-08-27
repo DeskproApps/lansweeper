@@ -27,7 +27,7 @@ const baseRequest: Request = async (client, {
     method,
     body,
     headers: {
-      "Authorization": `Bearer ${isAdmin ? tokens.access_token : placeholders.GLOBAL_ACCESS_TOKEN}`,
+      "Authorization": `Bearer ${isAdmin ? tokens.access_token : placeholders.ACCESS_TOKEN}`,
       "Accept": "application/json",
       "x-ls-integration-id": INTEGRATION_ID,
       "x-ls-integration-version": appVersion,
