@@ -4,7 +4,7 @@ import { baseRequest } from "./baseRequest";
 import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { RefreshToken } from "./types";
 
-const refreshAccessTokenService = (client: IDeskproClient) => {
+export async function refreshAccessTokenService (client: IDeskproClient) {  
   return baseRequest<RefreshToken>(client, {
     url: `${BASE_URL}/integrations/oauth/token`,
     data: [
@@ -19,5 +19,3 @@ const refreshAccessTokenService = (client: IDeskproClient) => {
   })
     .then(({ access_token }) => setAccessTokenService(client, access_token ));
 };
-
-export { refreshAccessTokenService };

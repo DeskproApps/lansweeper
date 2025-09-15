@@ -25,7 +25,7 @@ export const placeholders = {
   CLIENT_SECRET: "__client_secret__",
   ACCESS_TOKEN: `[[${ACCESS_TOKEN_PATH}]]`,
   GLOBAL_ACCESS_TOKEN: `__global_access_token.json("[access_token]")__`,
-  GLOBAL_REFRESH_TOKEN: `__global_access_token.json("[refresh_token]")__`,
+  GLOBAL_REFRESH_TOKEN: `__global_access_token.json("[refresh_token]").urlencode__`,
 };
 
 /** Lansweeper */
