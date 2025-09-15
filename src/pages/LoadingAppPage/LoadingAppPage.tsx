@@ -1,12 +1,11 @@
-import { LoadingSpinner, useDeskproLatestAppContext, useInitialisedDeskproAppClient } from "@deskpro/app-sdk";
-import { useAuthentication, useSetTitle } from "@/hooks";
-import type { FC } from "react";
-import { Settings, UserData } from "@/types";
-import { getEntityListService } from "@/services/deskpro";
 import { ErrorBlock } from "@/components/common";
-import { useNavigate } from "react-router-dom";
+import { getEntityListService } from "@/services/deskpro";
+import { LoadingSpinner, useDeskproLatestAppContext, useInitialisedDeskproAppClient } from "@deskpro/app-sdk";
+import { Settings, UserData } from "@/types";
 import { Stack } from "@deskpro/deskpro-ui";
-
+import { useAuthentication, useSetTitle } from "@/hooks";
+import { useNavigate } from "react-router-dom";
+import type { FC } from "react";
 
 const LoadingAppPage: FC = () => {
   useSetTitle();
@@ -14,7 +13,7 @@ const LoadingAppPage: FC = () => {
   const { context } = useDeskproLatestAppContext<UserData, Settings>()
   const deskproUser = context?.data?.user
 
-  const { isLoading, isAuthenticated } = useAuthentication({ refreshTokens: true })
+  const { isLoading, isAuthenticated } = useAuthentication({ shouldRefreshTokens: true })
   const navigate = useNavigate();
 
   useInitialisedDeskproAppClient((client) => {
