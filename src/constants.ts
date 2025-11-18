@@ -26,7 +26,7 @@ export const placeholders = {
   ACCESS_TOKEN: `[[${ACCESS_TOKEN_PATH}]]`,
   GLOBAL_ACCESS_TOKEN: `__global_access_token.json("[access_token]")__`,
   GLOBAL_REFRESH_TOKEN: `__global_access_token.json("[refresh_token]").urlencode__`,
-};
+} as const;
 
 /** Lansweeper */
 export const APP_URL = "https://app.lansweeper.com";
